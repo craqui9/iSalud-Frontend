@@ -1,7 +1,23 @@
 
+export interface RespuestaUsuario {
+  ok: boolean;
+  usuarios: Usuario[];
+}
 
-export interface Usuario{
+export interface Usuario {
+  _id: string;
+  rol: string;
+  nombre: string;
+  email: string;
+  password: string;
+  doctor: string;
+  __v: number;
+}
+
+//hecho a mano
+/* export interface Usuario{
     _id: string;
+    __v: number;
     rol: string;
     nombre: string;
     email: string;
@@ -25,4 +41,4 @@ export interface Tratamiento{
     descripcion: string;
     fecha_inicio: Date;
     fecha_final: Date;
-}
+} */

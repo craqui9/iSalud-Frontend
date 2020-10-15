@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-admin-principal',
@@ -8,7 +9,7 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class AdminPrincipalPage implements OnInit {
 
-  
+  usuarios: Usuario[] = [];
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -17,8 +18,8 @@ export class AdminPrincipalPage implements OnInit {
     this.usuarioService.getUsuarios()
         .subscribe(resp => {
           console.log(resp);
-          
-        })
+          //this.usuarios.push(...resp);
+        });
 
   }
 
