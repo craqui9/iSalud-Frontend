@@ -18,7 +18,7 @@ export class AdminPrincipalPage implements OnInit {
     this.usuarioService.getUsuarios()
         .subscribe(resp => {
           console.log(resp);
-          //this.usuarios.push(...resp);
+          this.usuarios.push(...resp.usuarios);
         });
 
   }
