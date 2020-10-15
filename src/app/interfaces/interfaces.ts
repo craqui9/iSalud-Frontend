@@ -1,6 +1,7 @@
 
 
 export interface Usuario{
+    _id: string;
     rol: string;
     nombre: string;
     email: string;
@@ -9,6 +10,7 @@ export interface Usuario{
 }
 
 export interface Cita{
+    _id: string;
     usuario_paciente: string;
     usuario_doctor: string;
     fecha: Date;
@@ -16,6 +18,7 @@ export interface Cita{
 }
 
 export interface Tratamiento{
+    _id: string;
     usuario_paciente: string;
     usuario_doctor: string;
     nombre_tratamiento: string;
