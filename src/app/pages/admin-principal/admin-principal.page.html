@@ -6,11 +6,54 @@
 
 <ion-content>
 
+  <!-- Creacion de usuarios -->
   <ion-list>
+    <!-- PROBAR SI PUEDO DEJAR MAS BONITO EL TITULO -->
+    <ion-item>
+      <ion-label class="ion-text-center">Creación de usuarios</ion-label>
+    </ion-item>
+
+    <!-- Escoger tipo de usuario -->
+    <ion-item>
+      <ion-label>Tipo de usuario</ion-label>
+      <ion-select id="rol" value="paciente" multiple="false">
+        <ion-select-option value="paciente">Paciente</ion-select-option>
+        <ion-select-option value="doctor">Doctor</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Entrada de dator -->
+    <!-- METER EL REQUIRED -->
+    <ion-item>
+      <ion-label>Correo electrónico:</ion-label>
+      <ion-input slot="end" type="text" placeholder="Ejemplo@iSalud.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input slot="end" type="text" placeholder="Nombre Apellidos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña:</ion-label>
+      <ion-input slot="end" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+
+    <!-- HACER QUE ESTO FUNCIONE -->
+    <ion-item *ngIf="rol == paciente">
+      <ion-label>Correo del Doctor:</ion-label>
+      <ion-input slot="end" type="text" placeholder="Doctor1@iSalud.com"></ion-input>
+    </ion-item>
+    
+    <ion-button expand="block" fill="clear" shape="round">
+      Crear usuario
+    </ion-button>
+  </ion-list>
+
+  <!-- Lista de usuarios -->
+  <!-- <ion-list>
     <ion-item *ngFor="let usuario of usuarios">
       <ion-label>Nombre: {{usuario.nombre}}</ion-label>
       <ion-label>Email: {{usuario.email}}</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 
 </ion-content>
