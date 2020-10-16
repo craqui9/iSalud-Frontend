@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AlertController, ToastController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
 
@@ -10,8 +11,21 @@ const URL = environment.url;
 })
 export class UsuarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private toastController: ToastController,
+              private alertController: AlertController) { }
 
+  async mensajeToast(mensaje){
+
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 1000
+    });
+    toast.present();
+
+  }
+
+  
   getUsuarios(){
 
     return this.http.get<RespuestaUsuario>(`${URL}/user/list`);
