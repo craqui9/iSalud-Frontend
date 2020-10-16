@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/interfaces';
+import { IonSelect } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-principal',
@@ -11,6 +12,8 @@ export class AdminPrincipalPage implements OnInit {
 
   usuarios: Usuario[] = [];
 
+  @ViewChild('selecRol') selecRol: IonSelect;
+
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -20,6 +23,8 @@ export class AdminPrincipalPage implements OnInit {
           console.log(resp);
           this.usuarios.push(...resp.usuarios);
         });
+
+    
 
   }
 

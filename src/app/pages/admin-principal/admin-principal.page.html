@@ -16,13 +16,13 @@
     <!-- Escoger tipo de usuario -->
     <ion-item>
       <ion-label>Tipo de usuario</ion-label>
-      <ion-select id="rol" value="paciente" multiple="false">
+      <ion-select value="paciente" multiple="false" #selecRol>
         <ion-select-option value="paciente">Paciente</ion-select-option>
         <ion-select-option value="doctor">Doctor</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <!-- Entrada de dator -->
+    <!-- Entrada de datos -->
     <!-- METER EL REQUIRED -->
     <ion-item>
       <ion-label>Correo electrónico:</ion-label>
@@ -38,7 +38,7 @@
     </ion-item>
 
     <!-- HACER QUE ESTO FUNCIONE -->
-    <ion-item *ngIf="rol == paciente">
+    <ion-item *ngIf="selecRol.value == 'paciente'">
       <ion-label>Correo del Doctor:</ion-label>
       <ion-input slot="end" type="text" placeholder="Doctor1@iSalud.com"></ion-input>
     </ion-item>
