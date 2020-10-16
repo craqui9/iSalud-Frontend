@@ -26,24 +26,24 @@
     <!-- METER EL REQUIRED -->
     <ion-item>
       <ion-label>Correo electrónico:</ion-label>
-      <ion-input slot="end" type="text" placeholder="Ejemplo@iSalud.com"></ion-input>
+      <ion-input slot="end" type="text" placeholder="Ejemplo@iSalud.com" #correoUsuario></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Nombre:</ion-label>
-      <ion-input slot="end" type="text" placeholder="Nombre Apellidos"></ion-input>
+      <ion-input slot="end" type="text" placeholder="Nombre Apellidos" #nombreUsuario></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Contraseña:</ion-label>
-      <ion-input slot="end" type="password" placeholder="Contraseña"></ion-input>
+      <ion-input slot="end" type="password" placeholder="Contraseña" #contraseñaUsuario></ion-input>
     </ion-item>
 
     <!-- HACER QUE ESTO FUNCIONE -->
-    <ion-item *ngIf="selecRol.value == 'paciente'">
+    <ion-item *ngIf="selecRol.value === 'paciente'">
       <ion-label>Correo del Doctor:</ion-label>
-      <ion-input slot="end" type="text" placeholder="Doctor1@iSalud.com"></ion-input>
+      <ion-input slot="end" type="text" placeholder="Doctor1@iSalud.com" #doctorUsuario></ion-input>
     </ion-item>
     
-    <ion-button expand="block" fill="clear" shape="round">
+    <ion-button (click)="crearUsuario()" expand="block" fill="clear" shape="round">
       Crear usuario
     </ion-button>
   </ion-list>
