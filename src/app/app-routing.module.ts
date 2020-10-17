@@ -14,7 +14,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'admin-principal',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 ];
