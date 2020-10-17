@@ -10,7 +10,7 @@ import { AlertController, IonInput, IonSelect } from '@ionic/angular';
 })
 export class AdminPrincipalPage implements OnInit {
 
-  usuarios: Usuario[] = [];
+  usuarios: Usuario[];
   usuarioNuevo: Usuario = {
     rol: '',
     nombre: '',
@@ -18,6 +18,7 @@ export class AdminPrincipalPage implements OnInit {
     password: '',
     doctor: ''
   };
+
 
   //Datos del formulario
   @ViewChild('selecRol') selecRol: IonSelect;
@@ -37,18 +38,22 @@ export class AdminPrincipalPage implements OnInit {
     
   }
 
-  //METODO PARA COMPROBAR QUE FUNCIONA LUEGO LO MODIFICO
+  //Metodo para meter los usuarios de la base de datos en 
+  //el array
   conseguirUsuarios(){
     this.usuarioService.getUsuarios()
     .subscribe(resp => {
-      console.log(resp);
-      this.usuarios.push(...resp.usuarios);
+      //console.log(resp);
+      this.usuarios = resp.usuarios;      
     });
   }
   //----------------------------------------------------------------//
 
   //Metodos principales para crear usuarios
-  crearUsuario(){   
+  crearUsuario(){  
+    
+    //Actualizar el array de usuarios
+    this.conseguirUsuarios();
   
     if(this.selecRol.value === 'paciente'){
 
@@ -63,12 +68,20 @@ export class AdminPrincipalPage implements OnInit {
           doctor: this.doctorUsuario.value.toString()
         } 
 
-        //ESTE METODO FUNCIONA
-        //SOLO QUE FALTA HACER LA COMPROBACION DE LOS DATOS
-        //Y EL TOAST PARA VER SI ESTAN BIEN TODOS LOS DATOS
-        //this.usuarioService.registro(this.usuarioNuevo);
+        //Comprobaciones
+        if(!this.comprobacionPaciente()){
+          this.usuarioService.mensajeToast("Por favor, rellene todos los datos.");
+        }else if(this.existeCorreo(this.usuarioNuevo)){
+          this.usuarioService.mensajeToast("El correo indicado ya está en uso.");
+        }else if(!this.existeDoctor(this.usuarioNuevo)){
+          this.usuarioService.mensajeToast("El doctor indicado no existe.");
+        }else{
+          //Creacion del usuario
+          this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
+          this.vaciarInputsPaciente();
+        }
 
-        this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
+        
         
       }
 
@@ -86,21 +99,30 @@ export class AdminPrincipalPage implements OnInit {
           doctor: this.correoUsuario.value.toString()
         } 
 
-        //FALTA HACER LA COMPROBACION DE LOS DATOS
+        if(!this.comprobacionDoctor()){
+          this.usuarioService.mensajeToast("Por favor, rellene todos los datos.");
+        }else if(this.existeCorreo(this.usuarioNuevo)){
+          this.usuarioService.mensajeToast("El correo indicado ya está en uso.");
+        }else{
+          //Creacion del usuario
+          this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
+          this.vaciarInputsDoctor();
+        }
 
-        this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
-        
       }
       
     }
 
   }
 
-  //Este es el que crea definitivamente el usuario
+  //ESTE ES EL QUE CREA DEFINITIVAMENTE LOS USUARIOS
   crearUsuario2(usuarioNuevo: Usuario){
 
     console.log(usuarioNuevo);
-    //this.usuarioService.registro(usuarioNuevo);
+
+    //-----------------------------------------------------------//
+    this.usuarioService.registro(usuarioNuevo);
+    //-----------------------------------------------------------//
 
   }
 
@@ -131,15 +153,15 @@ export class AdminPrincipalPage implements OnInit {
           cssClass: 'secondary',
           handler: () => {
             
-            console.log('Cancelado');
+            console.log('Usuario no creado');
           }
         }, {
           text: 'Aceptar',
           handler: () => {
             //------------------------------//
             this.crearUsuario2(usuarioNuevo);
+            this.usuarioService.mensajeToast('Usuario creado exitosamente.')
             //------------------------------//
-            console.log('confirmado');
           }
         }
       ]
@@ -150,21 +172,19 @@ export class AdminPrincipalPage implements OnInit {
   }
   //----------------------------------------------------------------//
 
+  //-----------------------COMPROBACIONES-----------------------//
+
   //Comprueba solo si está vacio
   comprobacionPaciente(): boolean{
     
     //Comprobar si estan todos los datos PACIENTE
-    if(this.correoUsuario.value === ''){
-      console.log('Por favor, rellene todos los datos.');
+    if(this.correoUsuario.value === ""){
       return false;
     }else if(this.nombreUsuario.value === ""){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else if(this.contraseñaUsuario.value === ""){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else if(this.doctorUsuario.value === ""){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else{
 
@@ -176,17 +196,14 @@ export class AdminPrincipalPage implements OnInit {
   }
   
   //Comprueba solo si está vacio
-  comprobacionDoctor(){
+  comprobacionDoctor(): boolean{
 
     //Comprobar si estan todos los datos DOCTOR
     if(this.correoUsuario.value === ''){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else if(this.nombreUsuario.value === ""){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else if(this.contraseñaUsuario.value === ""){
-      console.log('Por favor, rellene todos los datos.');
       return false;
     }else{
 
@@ -194,6 +211,54 @@ export class AdminPrincipalPage implements OnInit {
 
     }
 
+  }
+
+  //Comprueba si el correo existe
+  existeCorreo(usuario: Usuario): boolean{
+
+    var existe = false;
+
+    //Actualizo el array de usuarios por si acaso
+    this.conseguirUsuarios();
+    
+    if(this.usuarios.find(usu => usu.email === usuario.email)){
+      existe = true;
+    }    
+    
+    return existe;
+
+  }
+
+  //Comprueba si el doctor existe
+  existeDoctor(usuario: Usuario): boolean{
+    
+    var existe = false;
+
+    //Actualizo el array de usuarios por si acaso
+    this.conseguirUsuarios();
+    
+    if(this.usuarios.find(usu => usu.email === usuario.doctor)){
+      existe = true;
+    }    
+    
+    return existe;
+    
+
+  }
+  //----------------------------------------------------------------//
+
+  //-----------------------VACIAR DATOS-----------------------//
+  vaciarInputsPaciente(){
+    this.correoUsuario.value = "";
+    this.nombreUsuario.value = "";
+    this.contraseñaUsuario.value = "";
+    this.doctorUsuario.value = "";
+  }
+
+  vaciarInputsDoctor(){
+    this.correoUsuario.value = "";
+    this.nombreUsuario.value = "";
+    this.contraseñaUsuario.value = "";
   }
 
 }

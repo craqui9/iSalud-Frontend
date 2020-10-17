@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
 
@@ -12,9 +12,9 @@ const URL = environment.url;
 export class UsuarioService {
 
   constructor(private http: HttpClient,
-              private toastController: ToastController,
-              private alertController: AlertController) { }
+              private toastController: ToastController) { }
 
+  //Metodo para generar mensajes
   async mensajeToast(mensaje){
 
     const toast = await this.toastController.create({
@@ -25,13 +25,14 @@ export class UsuarioService {
 
   }
 
-  
+  //Metodo que devuelve todos los usuarios
   getUsuarios(){
 
     return this.http.get<RespuestaUsuario>(`${URL}/user/list`);
 
   }
 
+  //Metodo que crea el usuario en la base de datos
   registro(usuario: Usuario){
 
     return new Promise(resolve => {
@@ -50,4 +51,6 @@ export class UsuarioService {
     });
 
   }
+
+  
 }
