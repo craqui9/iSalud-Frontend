@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
+  //Datos del formulario
+  @ViewChild('correoUsuario') correoUsuario: IonInput;
+  @ViewChild('contraseñaUsuario') contraseñaUsuario: IonInput;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  login(){
+    
+    
+    
   }
 
 }
