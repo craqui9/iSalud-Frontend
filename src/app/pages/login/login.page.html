@@ -12,7 +12,7 @@
     
     <ion-slide>
 
-      <form (ngSubmit)="login()" >
+      <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
         <ion-grid fixed>
 
           <ion-row>
@@ -29,14 +29,16 @@
                   <ion-item>
                     <ion-input placeholder="Email"
                                type="text"
-                               #correoUsuario
+                               name="email"
+                               [(ngModel)]="loginUser.email"
                                required></ion-input>
                   </ion-item>
 
                   <ion-item>
                     <ion-input placeholder="Contraseña"
                                type="password"
-                               #contraseñaUsuario
+                               name="password"
+                               [(ngModel)]="loginUser.password"
                                required></ion-input>
                   </ion-item>
 

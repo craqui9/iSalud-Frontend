@@ -6,11 +6,11 @@ export interface RespuestaUsuario {
 
 export interface Usuario {
   _id?: string;
-  rol: string;
-  nombre: string;
-  email: string;
-  password: string;
-  doctor: string;
+  rol?: string;
+  nombre?: string;
+  email?: string;
+  password?: string;
+  doctor?: string;
   __v?: number;
 }
 

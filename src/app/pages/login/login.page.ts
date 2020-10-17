@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInput } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
+import { IonInput, IonSlides, NavController } from '@ionic/angular';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,34 @@ import { IonInput } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  //Datos del formulario
-  @ViewChild('correoUsuario') correoUsuario: IonInput;
-  @ViewChild('contraseñaUsuario') contraseñaUsuario: IonInput;
+  @ViewChild('slidePrincipal', {static: true}) slides: IonSlides ;
 
-  constructor() { }
+  loginUser = {
+    email: '',
+    password: ''
+  };
+
+  constructor(private usuarioService: UsuarioService,
+              private navController: NavController) { }
 
   ngOnInit() {
+    //pa que el slide se quede quieto
+    this.slides.lockSwipes(true);
   }
 
-  login(){
+  async login(fLogin: NgForm){
     
+    if(fLogin.invalid){
+      this.usuarioService.mensajeToast('Rellene todos los datos.');
+      return;
+    }
+
+    const valido = await this.usuarioService.login(this.loginUser.email, this.loginUser.password);
     
+
+    if(!valido){
+      this.usuarioService.mensajeToast('Correo/contraseña no son correctos.');
+    }
     
   }
 
