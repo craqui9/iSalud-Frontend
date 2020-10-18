@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/interfaces';
-import { AlertController, IonInput, IonSelect } from '@ionic/angular';
+import { AlertController, IonInput, IonSelect, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-principal',
@@ -30,12 +30,18 @@ export class AdminPrincipalPage implements OnInit {
   //----------------------------------------------------------------//
 
   constructor(private usuarioService: UsuarioService,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private menuController: MenuController) { }
 
   ngOnInit() {
 
     this.conseguirUsuarios();
     
+  }
+
+  //Abrir el menu
+  mostrarMenu(){
+    this.menuController.open('menuAdmin');
   }
 
   //Metodo para meter los usuarios de la base de datos en 
