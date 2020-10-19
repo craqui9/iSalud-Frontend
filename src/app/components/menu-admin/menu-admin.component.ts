@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-menu-admin',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {}
+
+  logout(){
+    this.usuarioService.logout();
+  }
 
 }

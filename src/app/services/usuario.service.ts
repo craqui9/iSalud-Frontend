@@ -99,4 +99,9 @@ export class UsuarioService {
     });
   }
 
+  //Logout
+  logout(){
+    this.navController.navigateRoot('/login', {animated: true});
+  }
+
 }
