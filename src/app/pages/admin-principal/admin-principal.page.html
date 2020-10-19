@@ -21,7 +21,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>adminPrincipal</ion-title>
+    <ion-title>Página Administrador</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -36,7 +36,7 @@
         <ion-list>
           <!-- PROBAR SI PUEDO DEJAR MAS BONITO EL TITULO -->
           <ion-item>
-            <ion-label class="ion-text-center">Creación de usuarios</ion-label>
+            <ion-label class="titulo" color="primary">Creación de usuarios</ion-label>
           </ion-item>
       
           <!-- Escoger tipo de usuario -->
@@ -73,8 +73,8 @@
                        #doctorUsuario required></ion-input>
           </ion-item>
           
-          <ion-button (click)="crearUsuario()" expand="block"
-                      fill="clear" shape="round">
+          <ion-button (click)="crearUsuario()" color="tertiary"
+                      shape="round">
             Crear usuario
           </ion-button>
         </ion-list>
