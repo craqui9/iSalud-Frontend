@@ -4,15 +4,28 @@
     Opciones
   </ion-list-header>
 
-  <ion-item>Menu Item</ion-item>
-  <ion-item>Menu Item</ion-item>
-  <ion-item>Menu Item</ion-item>
-  <ion-item>Menu Item</ion-item>
-  <ion-item>Menu Item</ion-item>
+  <ion-item>
+    <ion-button (click)="crearUsuario()" expand="block" fill="clear" shape="round">
+      Crear Usuario
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="crearUsuario()" expand="block" fill="clear" shape="round">
+      Eliminar Usuario
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="crearUsuario()" expand="block" fill="clear" shape="round">
+      Ver Usuario
+    </ion-button>
+  </ion-item>
+
 
 </ion-list>
 
-<ion-button color="danger" (click)="logout()" expand="block" fill="clear" shape="round">
+<ion-button class="botonCerrar" color="danger" (click)="logout()" expand="block" fill="clear" shape="round">
   <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
   <label class="cerrar-sesion">Cerrar Sesión</label>
 </ion-button>
