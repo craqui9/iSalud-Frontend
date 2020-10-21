@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput, MenuController } from '@ionic/angular';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-admin-eliminar',
@@ -8,7 +9,10 @@ import { MenuController } from '@ionic/angular';
 })
 export class AdminEliminarPage implements OnInit {
 
-  constructor(private menuController: MenuController) { }
+  @ViewChild('correoUsuario') correoUsuario: IonInput;
+
+  constructor(private menuController: MenuController,
+              private usuarioService: UsuarioService) { }
 
   ngOnInit() {
   }
@@ -19,9 +23,13 @@ export class AdminEliminarPage implements OnInit {
   }
 
   //Boton eliminar usuario
-  eliminarUsuario(){
+  eliminarUsuario(){    
     
     
+    
+
+    //ESTO LO ELIMINA POR COMPLETO, HACER COMPROBACIONES ANTES
+    this.usuarioService.eliminarUsuario(this.correoUsuario.value.toString());
     
   }
 
