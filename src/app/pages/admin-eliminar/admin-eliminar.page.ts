@@ -18,4 +18,11 @@ export class AdminEliminarPage implements OnInit {
     this.menuController.open('menuAdmin');
   }
 
+  //Boton eliminar usuario
+  eliminarUsuario(){
+    
+    
+    
+  }
+
 }
