@@ -58,12 +58,14 @@ export class UsuarioService {
 
   }
 
-  //Metodo que elimina el usuario
+  //Eliminar el usuario
   eliminarUsuario(email: string){
+
+    const data = {email};
 
     return new Promise(resolve => {
 
-      this.http.post(`${URL}/user/delete`, email)
+      this.http.post(`${URL}/user/delete`, data)
                .subscribe(resp => {
                  console.log(resp);
                  
@@ -72,9 +74,9 @@ export class UsuarioService {
                  }else{
                    resolve(false);
                  }
-               }) ;;
+               }) ;
 
-    })
+    });
 
   }
 

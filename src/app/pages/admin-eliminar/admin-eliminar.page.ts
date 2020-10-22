@@ -29,7 +29,7 @@ export class AdminEliminarPage implements OnInit {
     
 
     //ESTO LO ELIMINA POR COMPLETO, HACER COMPROBACIONES ANTES
-    this.usuarioService.eliminarUsuario(this.correoUsuario.value.toString());
+    //this.usuarioService.eliminarUsuario(this.correoUsuario.value.toString());
     
   }
 
