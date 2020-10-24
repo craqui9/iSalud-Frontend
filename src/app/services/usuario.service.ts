@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, ToastController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
+
 
 const URL = environment.url;
 
@@ -25,7 +26,7 @@ export class UsuarioService {
 
     const toast = await this.toastController.create({
       message: mensaje,
-      duration: 1000
+      duration: 1500
     });
     toast.present();
 
@@ -37,6 +38,19 @@ export class UsuarioService {
     return this.http.get<RespuestaUsuario>(`${URL}/user/list`);
 
   }
+
+  //Buscar usuario por email
+  buscarUsuario(email: string){
+    return new Promise((resolve, reject) => {
+      this.http.post(`${URL}/user/email`, {email})
+               .subscribe(resp => {                     
+               //console.log(resp['usuario']);
+               
+               resolve(resp['usuario']);
+              }); 
+    }) 
+  }
+ 
 
   //Metodo que crea el usuario en la base de datos
   registro(usuario: Usuario){
