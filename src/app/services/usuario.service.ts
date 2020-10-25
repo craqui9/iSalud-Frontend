@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
 
@@ -19,7 +19,8 @@ export class UsuarioService {
   constructor(private http: HttpClient,
               private toastController: ToastController,
               private storage: Storage,
-              private navController: NavController) { }
+              private navController: NavController,
+              private alertController: AlertController) { }
 
   //Metodo para generar mensajes
   async mensajeToast(mensaje){
@@ -30,6 +31,18 @@ export class UsuarioService {
     });
     toast.present();
 
+  }
+
+  //Metodo de generacion de alertas
+  async presentAlert(message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Usuario',
+      message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   //Metodo que devuelve todos los usuarios
