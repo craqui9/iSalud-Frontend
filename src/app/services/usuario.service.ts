@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
+
 
 
 const URL = environment.url;
@@ -18,7 +18,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient,
               private toastController: ToastController,
-              private storage: Storage,
               private navController: NavController,
               private alertController: AlertController) { }
 

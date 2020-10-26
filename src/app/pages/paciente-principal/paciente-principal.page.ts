@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataLocalService } from '../../services/data-local.service';
 
 @Component({
   selector: 'app-paciente-principal',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PacientePrincipalPage implements OnInit {
 
-  constructor() { }
+  constructor(private dataLocal: DataLocalService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    
   }
 
 }
