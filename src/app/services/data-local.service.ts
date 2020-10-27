@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class DataLocalService {
+  email: string;
 
   constructor(private storage: Storage) { }
 
@@ -17,4 +18,12 @@ export class DataLocalService {
   }
 
   //Hacer el get usuario
+  async cargarUsuario(){
+    const mail = await this.storage.get('email');
+    
+    this.email = mail;
+    return this.email;
+  }
+
+
 }
