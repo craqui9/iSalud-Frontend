@@ -26,7 +26,8 @@ export class PacientePrincipalPage{
     //Consigo su doctor
     await this.buscarUsu(this.usuario.doctor, false);
     
-    
+    //Guardar el doctor en el local storage
+    this.dataLocal.guardarDoctor(this.doctor.email);
     
   }
 

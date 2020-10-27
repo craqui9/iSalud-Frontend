@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 })
 export class DataLocalService {
   email: string;
+  doctor: string;
 
   constructor(private storage: Storage) { }
 
@@ -13,6 +14,7 @@ export class DataLocalService {
     this.storage.clear();
   }
 
+  //----------------------USUARIO----------------------
   guardarUsuario(email: string){
     this.storage.set('email', email);
   }
@@ -24,6 +26,18 @@ export class DataLocalService {
     this.email = mail;
     return this.email;
   }
+  //------------------------------------------------------------------
+  //----------------------DOCTOR----------------------
+  guardarDoctor(email: string){
+    this.storage.set('doctor', email);
+  }
 
+  //Hacer el get usuario
+  async cargarDoctor(){
+    const mail = await this.storage.get('doctor');
+    
+    this.doctor = mail;
+    return this.doctor;
+  }
 
 }
