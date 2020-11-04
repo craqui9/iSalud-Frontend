@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataLocalService } from '../../services/data-local.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/interfaces';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-paciente-principal',
@@ -14,7 +15,8 @@ export class PacientePrincipalPage{
   doctor: Usuario;
 
   constructor(private dataLocal: DataLocalService,
-              private usuarioService: UsuarioService) { }
+              private usuarioService: UsuarioService,
+              private menuController: MenuController) { }
 
   //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
   async ionViewWillEnter() {
@@ -30,6 +32,10 @@ export class PacientePrincipalPage{
     this.dataLocal.guardarDoctor(this.doctor.email);
     
   }
+    //Abrir el menu
+    mostrarMenu(){
+      this.menuController.open('menuPaciente');
+    }
 
   //Guardar el usuario
   async buscarUsu(email, bandera){

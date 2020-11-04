@@ -128,7 +128,7 @@ export class UsuarioService {
                       }
                       case 'doctor': {
                         //enrutar a doctor
-                        //this.navController.navigateRoot('doctor-principal', {animated: true});
+                        this.navController.navigateRoot('doctor-principal', {animated: true});
                         break;
                       }
                       case 'paciente': {

@@ -3,11 +3,11 @@ import { UsuarioService } from '../../services/usuario.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-menu-paciente',
-  templateUrl: './menu-paciente.component.html',
-  styleUrls: ['./menu-paciente.component.scss'],
+  selector: 'app-menu-doctor',
+  templateUrl: './menu-doctor.component.html',
+  styleUrls: ['./menu-doctor.component.scss'],
 })
-export class MenuPacienteComponent implements OnInit {
+export class MenuDoctorComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService,
               private navController: NavController) { }
@@ -22,5 +22,4 @@ export class MenuPacienteComponent implements OnInit {
     console.log('hola');
     
   }
-
 }
