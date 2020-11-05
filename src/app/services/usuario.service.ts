@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
@@ -12,9 +12,6 @@ const URL = environment.url;
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  token: string = null;
-  private usuario: Usuario = {};
 
   constructor(private http: HttpClient,
               private toastController: ToastController,

@@ -124,8 +124,6 @@ export class AdminPrincipalPage implements OnInit {
   //ESTE ES EL QUE CREA DEFINITIVAMENTE LOS USUARIOS
   crearUsuario2(usuarioNuevo: Usuario){
 
-    console.log(usuarioNuevo);
-
     //-----------------------------------------------------------//
     this.usuarioService.registro(usuarioNuevo);
     //-----------------------------------------------------------//
@@ -182,15 +180,20 @@ export class AdminPrincipalPage implements OnInit {
 
   //Comprueba solo si está vacio
   comprobacionPaciente(): boolean{
+
+    let correo = this.correoUsuario.value.toString();
+    let nombre = this.nombreUsuario.value.toString();
+    let contraseña = this.contraseñaUsuario.value.toString();
+    let doctor = this.doctorUsuario.value.toString();
     
     //Comprobar si estan todos los datos PACIENTE
-    if(this.correoUsuario.value === ""){
+    if(correo.trim() === ""){
       return false;
-    }else if(this.nombreUsuario.value === ""){
+    }else if(nombre.trim() === ""){
       return false;
-    }else if(this.contraseñaUsuario.value === ""){
+    }else if(contraseña.trim() === ""){
       return false;
-    }else if(this.doctorUsuario.value === ""){
+    }else if(doctor.trim() === ""){
       return false;
     }else{
 

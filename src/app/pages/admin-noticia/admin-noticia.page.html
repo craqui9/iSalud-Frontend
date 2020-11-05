@@ -28,4 +28,37 @@
 
 <ion-content>
 
+  <form>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-list>
+
+          <ion-item>
+            <ion-label class="titulo" color="primary">Creación de noticia</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Título:</ion-label>
+            <ion-input slot="end" type="text" placeholder="Ejemplo"
+                       #titulo required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-textarea placeholder="Descripción"
+                          #descripcion auto-grow=true></ion-textarea>
+          </ion-item>
+
+          <ion-button (click)="botonCrear()" color="tertiary"
+                      shape="round">
+            Crear noticia
+          </ion-button>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+
+  </form>
+
 </ion-content>
