@@ -1,31 +1,33 @@
-<ion-menu side="start" menuId="menuDoctor" contentId="main">
+<ion-menu side="start" menuId="menuPaciente" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Menú Doctor</ion-title>
+      <ion-title>Menú Paciente</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
 
-    <app-menu-doctor></app-menu-doctor>
+    <app-menu-paciente></app-menu-paciente>
 
   </ion-content>
 </ion-menu>
 <ion-router-outlet id="main"></ion-router-outlet>
 
+
 <ion-header>
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-button (click)="mostrarMenu()">
         <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <ion-title>(logo de iSalud) iSalud</ion-title>
+    <ion-title>Noticias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-title>doctor</ion-title>
+  <ion-title>noticias PACIENTE</ion-title>
 
 </ion-content>

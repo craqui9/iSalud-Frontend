@@ -35,6 +35,15 @@ const routes: Routes = [
     path: 'admin-noticia',
     loadChildren: () => import('./pages/admin-noticia/admin-noticia.module').then( m => m.AdminNoticiaPageModule)
   },
+  {
+    path: 'ver-noticias-paciente',
+    loadChildren: () => import('./pages/ver-noticias-paciente/ver-noticias-paciente.module').then( m => m.VerNoticiasPacientePageModule)
+  },
+  {
+    path: 'ver-noticias-doctor',
+    loadChildren: () => import('./pages/ver-noticias-doctor/ver-noticias-doctor.module').then( m => m.VerNoticiasDoctorPageModule)
+  },
+
 ];
 
 @NgModule({

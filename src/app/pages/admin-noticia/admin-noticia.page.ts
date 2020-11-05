@@ -37,7 +37,7 @@ export class AdminNoticiaPage implements OnInit {
       
       this.generarObjeto();
       
-      this.noticiaService.crearNoticia(this.noticiaNueva);      
+      this.noticiaService.crearNoticia(this.noticiaNueva);
 
       this.usuarioService.mensajeToast('Noticia creada con éxito.');
       this.vaciarInputs();

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaNoticia, Noticia } from '../interfaces/interfaces';
 

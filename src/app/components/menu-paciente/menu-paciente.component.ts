@@ -23,4 +23,12 @@ export class MenuPacienteComponent implements OnInit {
     
   }
 
+  inicio(){
+    this.navController.navigateRoot('paciente-principal', {animated: false});
+  }
+
+  noticias(){
+    this.navController.navigateRoot('ver-noticias-paciente', {animated: false});
+  }
+
 }

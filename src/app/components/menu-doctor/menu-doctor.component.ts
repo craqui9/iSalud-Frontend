@@ -22,4 +22,12 @@ export class MenuDoctorComponent implements OnInit {
     console.log('hola');
     
   }
+
+  inicio(){
+    this.navController.navigateRoot('doctor-principal', {animated: false});
+  }
+
+  noticias(){
+    this.navController.navigateRoot('ver-noticias-doctor', {animated: false});
+  }
 }
