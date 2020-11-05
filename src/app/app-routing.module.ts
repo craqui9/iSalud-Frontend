@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'doctor-principal',
     loadChildren: () => import('./pages/doctor-principal/doctor-principal.module').then( m => m.DoctorPrincipalPageModule)
   },
+  {
+    path: 'admin-noticia',
+    loadChildren: () => import('./pages/admin-noticia/admin-noticia.module').then( m => m.AdminNoticiaPageModule)
+  },
 ];
 
 @NgModule({

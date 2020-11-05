@@ -31,4 +31,8 @@ export class MenuAdminComponent implements OnInit {
     this.navController.navigateRoot('admin-ver', {animated: false});
   }
 
+  crearNoticia(){
+    this.navController.navigateRoot('admin-noticia', {animated: false});
+  }
+
 }
