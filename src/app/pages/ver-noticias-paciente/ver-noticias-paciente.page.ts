@@ -19,8 +19,6 @@ export class VerNoticiasPacientePage{
   async ionViewWillEnter() {
 
     this.actualizarArray();
-
-    console.log(this.noticias);
    
   }
 
