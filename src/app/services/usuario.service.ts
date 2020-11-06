@@ -68,7 +68,6 @@ export class UsuarioService {
 
       this.http.post(`${URL}/user/create`, usuario)
                .subscribe(resp => {
-                console.log(resp);
                 
                 if(resp['ok']){
                   resolve(true);
@@ -90,7 +89,6 @@ export class UsuarioService {
 
       this.http.post(`${URL}/user/delete`, data)
                .subscribe(resp => {
-                 console.log(resp);
                  
                  if(resp['ok']){
                    resolve(true);
@@ -112,10 +110,8 @@ export class UsuarioService {
 
       this.http.post(`${URL}/user/login`, data)
                 .subscribe(async resp => {
-                  console.log(resp);
 
                   if(resp['ok']){
-                    console.log(resp['rol']);                    
 
                     switch (resp['rol']){
                       case 'admin': {

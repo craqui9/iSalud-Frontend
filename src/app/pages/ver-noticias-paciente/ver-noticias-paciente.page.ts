@@ -33,6 +33,7 @@ export class VerNoticiasPacientePage{
     this.noticiaService.getNoticias()
         .subscribe(resp => {
           this.noticias.push(...resp.noticias);
+          this.noticias.reverse();
         });
 
 
