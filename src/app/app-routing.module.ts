@@ -43,6 +43,18 @@ const routes: Routes = [
     path: 'ver-noticias-doctor',
     loadChildren: () => import('./pages/ver-noticias-doctor/ver-noticias-doctor.module').then( m => m.VerNoticiasDoctorPageModule)
   },
+  {
+    path: 'doctor-crear-cita',
+    loadChildren: () => import('./pages/doctor-crear-cita/doctor-crear-cita.module').then( m => m.DoctorCrearCitaPageModule)
+  },
+  {
+    path: 'doctor-historial',
+    loadChildren: () => import('./pages/doctor-historial/doctor-historial.module').then( m => m.DoctorHistorialPageModule)
+  },
+  {
+    path: 'doctor-listado-pacientes',
+    loadChildren: () => import('./components/doctor-listado-pacientes/doctor-listado-pacientes.module').then( m => m.DoctorListadoPacientesPageModule)
+  },
 
 ];
 

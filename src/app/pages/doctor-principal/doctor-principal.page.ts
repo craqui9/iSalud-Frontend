@@ -11,7 +11,13 @@ import { Usuario } from '../../interfaces/interfaces';
 })
 export class DoctorPrincipalPage{
 
-  usuario: Usuario;
+  //MUY IMPORTANTE INICIALIZAR EL ATRIBUTO DEL OBJETO CON ALGO PRA QUE 
+  //LUEGO NO DIGA QUE ESTA VACIO AUN QUE LE ESTEMOS
+  //ASIGNANDO UN VALOR, COMO ESTE ES ASIGNADO DE MANERA ASINCRONA
+  //HAY QUE DARLE UN VALOR AUN QUE SEA VACIO ANTES
+  usuario: Usuario = {
+    nombre: ''
+  };
 
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
@@ -24,7 +30,6 @@ export class DoctorPrincipalPage{
   
       //Consigo el usuario
       await this.buscarUsu(email);
-      
     }
 
     //Abrir el menu
@@ -33,20 +38,18 @@ export class DoctorPrincipalPage{
     }
 
     //Guardar el usuario
-  async buscarUsu(email){
+    async buscarUsu(email){
 
-    var getDatos: Usuario;
-    getDatos = await this.usuarioService.buscarUsuario(email);
+      var getDatos: Usuario;
+      getDatos = await this.usuarioService.buscarUsuario(email);
 
-    this.usuario = {
-      email: getDatos.email,
-      nombre: getDatos.nombre,
-      password: getDatos.password,
-      doctor: getDatos.doctor,
-      rol: getDatos.rol
-    }
-    
-    
+      this.usuario = {
+        email: getDatos.email,
+        nombre: getDatos.nombre,
+        password: getDatos.password,
+        doctor: getDatos.doctor,
+        rol: getDatos.rol
+      }
 
   }
 
