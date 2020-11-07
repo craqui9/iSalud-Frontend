@@ -20,11 +20,6 @@ export class MenuDoctorComponent implements OnInit {
     this.usuarioService.logout();
   }
 
-  onClick(){
-    console.log('hola');
-    
-  }
-
   inicio(){
     this.navController.navigateRoot('doctor-principal', {animated: false});
   }
@@ -34,19 +29,10 @@ export class MenuDoctorComponent implements OnInit {
   }
 
   cita(){
-    //limpiamos el campo de modo por si acaso
-    this.dataLocalService.guardarModo('');
-
     this.navController.navigateRoot('doctor-crear-cita', {animated: false});
-    this.dataLocalService.guardarModo('cita');
   }
 
   historial(){
-    //limpiamos el campo de modo por si acaso
-    this.dataLocalService.guardarModo('');
-
-    
     this.navController.navigateRoot('doctor-historial', {animated: false});
-    this.dataLocalService.guardarModo('historial');
   }
 }

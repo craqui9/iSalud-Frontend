@@ -57,7 +57,20 @@ export class UsuarioService {
                
                resolve(resp['usuario']);
               }); 
-    }) 
+    });
+  }
+
+  //Listar usuarios por doctor
+  listaDoctor(doctor: string){
+    
+    return new Promise((resolve, reject) => {
+      this.http.post(`${URL}/user/doctor`, {doctor})
+               .subscribe(resp => {
+
+               resolve(resp['usuario']);
+              }); 
+    });
+    
   }
  
 

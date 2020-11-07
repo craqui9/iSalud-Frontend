@@ -5,6 +5,7 @@ import { MenuPacienteComponent } from './menu-paciente/menu-paciente.component';
 import { MenuDoctorComponent } from './menu-doctor/menu-doctor.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticia/noticia.component';
+import { DoctorListadoPacientesComponent } from './doctor-listado-pacientes/doctor-listado-pacientes.component';
 
 
 
@@ -14,14 +15,16 @@ import { NoticiaComponent } from './noticia/noticia.component';
     MenuPacienteComponent,
     MenuDoctorComponent,
     NoticiasComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    DoctorListadoPacientesComponent
   ],
   exports: [
     MenuAdminComponent,
     MenuPacienteComponent,
     MenuDoctorComponent,
     NoticiasComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    DoctorListadoPacientesComponent
   ],
   imports: [
     CommonModule

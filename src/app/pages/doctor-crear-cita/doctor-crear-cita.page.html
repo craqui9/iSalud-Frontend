@@ -26,6 +26,29 @@
 
 <ion-content>
 
-  <ion-title>cita</ion-title>
+  <ion-grid fixed>
+    <ion-row>
+  
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+               *ngFor="let usuario of usuarios; let i = index">
+  
+        <!-- -------------------------------- -->
+        <ion-card>
+
+          <ion-card-header>
+            <ion-card-title>{{usuario.nombre}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <p>{{usuario.email}}</p>
+          </ion-card-content>
+        
+        </ion-card>
+        <!-- -------------------------------- -->
+  
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

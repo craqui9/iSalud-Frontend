@@ -51,10 +51,6 @@ const routes: Routes = [
     path: 'doctor-historial',
     loadChildren: () => import('./pages/doctor-historial/doctor-historial.module').then( m => m.DoctorHistorialPageModule)
   },
-  {
-    path: 'doctor-listado-pacientes',
-    loadChildren: () => import('./components/doctor-listado-pacientes/doctor-listado-pacientes.module').then( m => m.DoctorListadoPacientesPageModule)
-  },
 
 ];
 

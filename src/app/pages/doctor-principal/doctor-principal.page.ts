@@ -18,6 +18,8 @@ export class DoctorPrincipalPage{
   usuario: Usuario = {
     nombre: ''
   };
+  usuarios: Usuario[] = [];
+  doctor: string;
 
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
@@ -27,11 +29,13 @@ export class DoctorPrincipalPage{
     async ionViewWillEnter() {
 
       const email = await this.dataLocal.cargarUsuario();
+      this.doctor = email;
   
       //Consigo el usuario
       await this.buscarUsu(email);
+      
     }
-
+    
     //Abrir el menu
     mostrarMenu(){
       this.menuController.open('menuDoctor');
@@ -50,7 +54,6 @@ export class DoctorPrincipalPage{
         doctor: getDatos.doctor,
         rol: getDatos.rol
       }
-
   }
 
 }
