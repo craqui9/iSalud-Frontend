@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 export class DataLocalService {
   email: string;
   doctor: string;
-  modoo: string;
+  paciente: string;
 
   constructor(private storage: Storage) { }
 
@@ -41,15 +41,15 @@ export class DataLocalService {
     return this.doctor;
   }
   //------------------------------------------------------------------
-  //----------------------MODO MENU DOCTOR----------------------
-  guardarModo(modo: string){
-    this.storage.set('modo', modo);
+  //----------------------PACIENTE----------------------
+  guardarPaciente(emailPaciente: string){
+    this.storage.set('emailPaciente', emailPaciente);
   }
 
-  async cargarModo(){
-    const mod = await this.storage.get('modo');
+  async cargarPaciente(){
+    const email = await this.storage.get('emailPaciente');
 
-    this.modoo = mod;
-    return this.modoo;
+    this.paciente = email;
+    return this.paciente;
   }
 }

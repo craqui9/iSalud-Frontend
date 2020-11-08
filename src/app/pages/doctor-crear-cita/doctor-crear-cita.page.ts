@@ -21,6 +21,8 @@ export class DoctorCrearCitaPage{
   usuarios: Usuario[] = [];
   doctor: string;
 
+  modo: string = 'cita'
+
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
               private menuController: MenuController) { }

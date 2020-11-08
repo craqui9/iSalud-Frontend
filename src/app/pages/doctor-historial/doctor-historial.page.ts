@@ -23,6 +23,8 @@ export class DoctorHistorialPage {
   usuarios: Usuario[] = [];
   doctor: string;
 
+  modo: string = 'historial'
+
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
               private menuController: MenuController) { }

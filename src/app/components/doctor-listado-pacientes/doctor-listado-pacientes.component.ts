@@ -10,6 +10,7 @@ import { Usuario } from '../../interfaces/interfaces';
 export class DoctorListadoPacientesComponent {
 
   @Input() usuarios: Usuario[] = [];
+  @Input() modo: string;
 
   constructor() { }
 
