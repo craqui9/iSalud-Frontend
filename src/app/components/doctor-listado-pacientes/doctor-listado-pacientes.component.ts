@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataLocalService } from '../../services/data-local.service';
+import { Usuario } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-doctor-listado-pacientes',
@@ -8,17 +9,12 @@ import { DataLocalService } from '../../services/data-local.service';
 })
 export class DoctorListadoPacientesComponent {
 
-  prueba;
+  @Input() usuarios: Usuario[] = [];
 
-  constructor(private dataLocal: DataLocalService) { }
+  constructor() { }
 
   async ionViewWillEnter() {
 
-    const aux = await this.dataLocal.cargarModo();
-
-    this.prueba = aux;
-    console.log(aux);
-    
   }
 
 }

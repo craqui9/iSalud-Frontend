@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonCard, MenuController } from '@ionic/angular';
 import { DataLocalService } from '../../services/data-local.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/interfaces';
@@ -10,6 +10,8 @@ import { Usuario } from '../../interfaces/interfaces';
   styleUrls: ['./doctor-historial.page.scss'],
 })
 export class DoctorHistorialPage {
+
+  @ViewChild('targeta') targeta: IonCard;
 
   //MUY IMPORTANTE INICIALIZAR EL ATRIBUTO DEL OBJETO CON ALGO PRA QUE 
   //LUEGO NO DIGA QUE ESTA VACIO AUN QUE LE ESTEMOS
@@ -69,5 +71,19 @@ export class DoctorHistorialPage {
         doctor: getDatos.doctor,
         rol: getDatos.rol
       }
+  }
+
+
+
+
+  //-----------------------------------------------------------------------//
+  //clickar sobre el paciente
+  clickTarjeta(){
+
+  }
+
+  //Obtener datos de la tarjeta
+  obtenTarjeta(){
+    //this.targeta.
   }
 }
