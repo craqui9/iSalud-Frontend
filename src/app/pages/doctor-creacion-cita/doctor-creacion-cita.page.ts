@@ -100,6 +100,10 @@ export class DoctorCreacionCitaPage {
 
   }
 
+  cancelar(){
+    this.navController.navigateRoot('doctor-crear-cita', {animated: true});
+  }
+
   onClick(){
     
     /* this.citas.forEach(cita => {
@@ -115,7 +119,7 @@ export class DoctorCreacionCitaPage {
         //console.log(this.citaNueva);
         this.citaService.crearCita(this.citaNueva);
         this.usuarioService.mensajeToast('Cita creada con éxito.');
-        this.navController.navigateRoot('doctor-crear-cita');
+        this.navController.navigateRoot('doctor-crear-cita', {animated: true});
     }else{
       this.usuarioService.mensajeToast('Por favor rellene los campos.');
     }
