@@ -4,8 +4,6 @@ import { NavController, ToastController, AlertController } from '@ionic/angular'
 import { environment } from '../../environments/environment';
 import { RespuestaUsuario, Usuario } from '../interfaces/interfaces';
 
-
-
 const URL = environment.url;
 
 @Injectable({

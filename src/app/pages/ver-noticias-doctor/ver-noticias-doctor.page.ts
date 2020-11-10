@@ -39,8 +39,4 @@ export class VerNoticiasDoctorPage {
     }
   }
 
-  loadData(event){
-    this.actualizarArray(event);
-  }
-
 }

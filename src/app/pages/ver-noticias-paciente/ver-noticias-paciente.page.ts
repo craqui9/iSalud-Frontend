@@ -42,8 +42,4 @@ export class VerNoticiasPacientePage{
     }
   }
 
-  loadData(event){
-    this.actualizarArray(event);
-  }
-
 }
