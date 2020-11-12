@@ -16,6 +16,7 @@ export class DoctorCreacionCitaPage {
   @ViewChild('motivoConsulta') motivoConsulta: IonTextarea;
 
   fechaCita;
+  horaCita;
 
   citas: Cita[] = [];
 
@@ -30,7 +31,9 @@ export class DoctorCreacionCitaPage {
     resuelto: false,
     usuario_paciente: '',
     usuario_doctor: '',
+    nombre_paciente: '',
     fecha: '',
+    hora:'',
     motivo: '',
     identificador: 0
   }
@@ -129,13 +132,16 @@ export class DoctorCreacionCitaPage {
   //Crear el objeto cita nueva
   crearObjeto(){
 
-    this.fechaCita = moment(this.fechaCita).format('MM-DD-YYYY');
+    this.fechaCita = moment(this.fechaCita).format('DD-MM-YYYY');
+    this.horaCita = moment(this.horaCita).format('HH:mm');
 
     this.citaNueva = {
       resuelto: false,
       usuario_paciente: this.usuarioPaciente.email,
       usuario_doctor: this.usuarioDoctor.email,
+      nombre_paciente: this.usuarioPaciente.nombre,
       fecha: this.fechaCita,
+      hora: this.horaCita,
       motivo: this.motivoConsulta.value,
       identificador: this.citas.length+1
     }
@@ -149,6 +155,8 @@ export class DoctorCreacionCitaPage {
     let motiu = this.motivoConsulta.value.toString();
 
     if(this.fechaCita === undefined){
+      valido = false;
+    }else if(this.horaCita === undefined){
       valido = false;
     }else if(motiu.trim() == ''){
       valido = false;

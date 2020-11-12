@@ -48,7 +48,7 @@ export class UsuarioService {
 
   //Buscar usuario por email
   buscarUsuario(email: string){
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       this.http.post(`${URL}/user/email`, {email})
                .subscribe(resp => {                     
                //console.log(resp['usuario']);
@@ -61,7 +61,7 @@ export class UsuarioService {
   //Listar usuarios por doctor
   listaDoctor(doctor: string){
     
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       this.http.post(`${URL}/user/doctor`, {doctor})
                .subscribe(resp => {
 

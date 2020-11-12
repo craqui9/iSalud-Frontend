@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { DataLocalService } from '../../services/data-local.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { MenuController } from '@ionic/angular';
-import { Usuario } from '../../interfaces/interfaces';
+import { Usuario, Cita } from '../../interfaces/interfaces';
+import { CitaService } from '../../services/cita.service';
 
 @Component({
   selector: 'app-doctor-principal',
@@ -11,7 +12,7 @@ import { Usuario } from '../../interfaces/interfaces';
 })
 export class DoctorPrincipalPage{
 
-  //MUY IMPORTANTE INICIALIZAR EL ATRIBUTO DEL OBJETO CON ALGO PRA QUE 
+  //MUY IMPORTANTE INICIALIZAR EL ATRIBUTO DEL OBJETO CON ALGO PRA QUE
   //LUEGO NO DIGA QUE ESTA VACIO AUN QUE LE ESTEMOS
   //ASIGNANDO UN VALOR, COMO ESTE ES ASIGNADO DE MANERA ASINCRONA
   //HAY QUE DARLE UN VALOR AUN QUE SEA VACIO ANTES
@@ -21,39 +22,57 @@ export class DoctorPrincipalPage{
   usuarios: Usuario[] = [];
   doctor: string;
 
+  citas: Cita[] = [];
+
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
-              private menuController: MenuController) { }
+              private menuController: MenuController,
+              private citaService: CitaService) { }
 
-    //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
-    async ionViewWillEnter() {
+  //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
+  async ionViewWillEnter() {
 
-      const email = await this.dataLocal.cargarUsuario();
-      this.doctor = email;
-  
-      //Consigo el usuario
-      await this.buscarUsu(email);
-      
-    }
+    const email = await this.dataLocal.cargarUsuario();
+    this.doctor = email;
+
+    //Consigo el usuario
+    await this.buscarUsu(email);
+
+    this.cargarCitas();
     
-    //Abrir el menu
-    mostrarMenu(){
-      this.menuController.open('menuDoctor');
+  }
+  
+  //Abrir el menu
+  mostrarMenu(){
+    this.menuController.open('menuDoctor');
+  }
+
+  //Guardar el usuario
+  async buscarUsu(email){
+
+    var getDatos: Usuario;
+    getDatos = await this.usuarioService.buscarUsuario(email);
+
+    this.usuario = {
+      email: getDatos.email,
+      nombre: getDatos.nombre,
+      password: getDatos.password,
+      doctor: getDatos.doctor,
+      rol: getDatos.rol
     }
+  }
 
-    //Guardar el usuario
-    async buscarUsu(email){
+  //Cargar las citas
+  async cargarCitas(){
 
-      var getDatos: Usuario;
-      getDatos = await this.usuarioService.buscarUsuario(email);
+    let getDatos;
+    await this.citaService.citasDoctor(this.doctor)
+              .then(resp => {
+                getDatos = resp;
+              })
 
-      this.usuario = {
-        email: getDatos.email,
-        nombre: getDatos.nombre,
-        password: getDatos.password,
-        doctor: getDatos.doctor,
-        rol: getDatos.rol
-      }
+    this.citas = getDatos;
+    
   }
 
 }

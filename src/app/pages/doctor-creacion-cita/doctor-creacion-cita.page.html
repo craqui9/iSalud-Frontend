@@ -45,6 +45,12 @@
           </ion-item>
 
           <ion-item>
+            <ion-label>Hora:</ion-label>
+            <ion-datetime [(ngModel)]="horaCita" displayFormat="HH:mm"
+                          name="fechaCita" placeholder="Selecciona una hora"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
             <ion-textarea placeholder="Motivo de la consulta"
                           #motivoConsulta auto-grow=true></ion-textarea>
           </ion-item>

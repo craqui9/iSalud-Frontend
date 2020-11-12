@@ -1,0 +1,12 @@
+<ion-grid fixed>
+  <ion-row>
+
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+             *ngFor="let cita of citas; let i = index">
+
+      <app-doctor-listado-cita [cita]="cita" ></app-doctor-listado-cita>
+      
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>

@@ -39,7 +39,9 @@ export interface Cita {
   _id?: string;
   usuario_paciente?: string;
   usuario_doctor?: string;
+  nombre_paciente?: string;
   fecha?: string;
+  hora?: string;
   motivo?: string;
   identificador?: number;
   __v?: number;

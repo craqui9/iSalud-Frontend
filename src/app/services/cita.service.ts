@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { RespuestaCita, Cita } from '../interfaces/interfaces';
 
@@ -38,4 +37,32 @@ export class CitaService {
     });
 
   }
+
+  //Listar citas por doctor
+  citasDoctor(usuario_doctor: string){
+
+    return new Promise(resolve => {
+      this.http.post(`${URL}/citas/doctor`, {usuario_doctor})
+          .subscribe(resp => {
+
+            resolve(resp['doctor']);
+          });
+    });
+
+  }
+
+  //Listar citas por paciente
+  citasPaciente(usuario_paciente: string){
+
+    return new Promise(resolve => {
+      this.http.post(`${URL}/citas/paciente`, {usuario_paciente})
+          .subscribe(resp => {
+
+            resolve(resp['paciente']);
+          });
+    });
+
+  }
+
+
 }

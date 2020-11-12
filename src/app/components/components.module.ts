@@ -7,6 +7,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticia/noticia.component';
 import { DoctorListadoPacientesComponent } from './doctor-listado-pacientes/doctor-listado-pacientes.component';
 import { DoctorListadoPacienteComponent } from './doctor-listado-paciente/doctor-listado-paciente.component';
+import { DoctorListadoCitaComponent } from './doctor-listado-cita/doctor-listado-cita.component';
+import { DoctorListadoCitasComponent } from './doctor-listado-citas/doctor-listado-citas.component';
 
 
 
@@ -18,7 +20,9 @@ import { DoctorListadoPacienteComponent } from './doctor-listado-paciente/doctor
     NoticiasComponent,
     NoticiaComponent,
     DoctorListadoPacientesComponent,
-    DoctorListadoPacienteComponent
+    DoctorListadoPacienteComponent,
+    DoctorListadoCitaComponent,
+    DoctorListadoCitasComponent
   ],
   exports: [
     MenuAdminComponent,
@@ -27,7 +31,9 @@ import { DoctorListadoPacienteComponent } from './doctor-listado-paciente/doctor
     NoticiasComponent,
     NoticiaComponent,
     DoctorListadoPacientesComponent,
-    DoctorListadoPacienteComponent
+    DoctorListadoPacienteComponent,
+    DoctorListadoCitaComponent,
+    DoctorListadoCitasComponent
   ],
   imports: [
     CommonModule
