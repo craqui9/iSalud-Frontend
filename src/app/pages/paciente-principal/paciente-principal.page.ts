@@ -21,15 +21,15 @@ export class PacientePrincipalPage{
   //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
   async ionViewWillEnter() {
 
-    const email = await this.dataLocal.cargarUsuario();
+    const dni = await this.dataLocal.cargarUsuario();
 
     //Consigo el usuario
-    await this.buscarUsu(email, true);
+    await this.buscarUsu(dni, true);
     //Consigo su doctor
     await this.buscarUsu(this.usuario.doctor, false);
     
     //Guardar el doctor en el local storage
-    this.dataLocal.guardarDoctor(this.doctor.email);
+    this.dataLocal.guardarDoctor(this.doctor.dni);
     
   }
     //Abrir el menu
@@ -38,27 +38,31 @@ export class PacientePrincipalPage{
     }
 
   //Guardar el usuario
-  async buscarUsu(email, bandera){
+  async buscarUsu(dni, bandera){
 
     var getDatos: Usuario;
-    getDatos = await this.usuarioService.buscarUsuario(email);
+    getDatos = await this.usuarioService.buscarUsuario(dni);
 
     //Así meto los datos en el objeto global :3
     if(bandera === true){
       this.usuario = {
-        email: getDatos.email,
+        dni: getDatos.dni,
         nombre: getDatos.nombre,
         password: getDatos.password,
         doctor: getDatos.doctor,
-        rol: getDatos.rol
+        rol: getDatos.rol,
+        fecha_nacimiento: getDatos.fecha_nacimiento,
+        sexo: getDatos.sexo
       }
     }else{
       this.doctor = {
-        email: getDatos.email,
+        dni: getDatos.dni,
         nombre: getDatos.nombre,
         password: getDatos.password,
         doctor: getDatos.doctor,
-        rol: getDatos.rol
+        rol: getDatos.rol,
+        fecha_nacimiento: getDatos.fecha_nacimiento,
+        sexo: getDatos.sexo
       }
     }
     

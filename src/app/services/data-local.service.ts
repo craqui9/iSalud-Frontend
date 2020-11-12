@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class DataLocalService {
-  email: string;
+  dni: string;
   doctor: string;
   paciente: string;
 
@@ -16,21 +16,21 @@ export class DataLocalService {
   }
 
   //----------------------USUARIO----------------------
-  guardarUsuario(email: string){
-    this.storage.set('email', email);
+  guardarUsuario(dni: string){
+    this.storage.set('dni', dni);
   }
 
   //Hacer el get usuario
   async cargarUsuario(){
-    const mail = await this.storage.get('email');
+    const mail = await this.storage.get('dni');
     
-    this.email = mail;
-    return this.email;
+    this.dni = mail;
+    return this.dni;
   }
   //------------------------------------------------------------------
   //----------------------DOCTOR----------------------
-  guardarDoctor(email: string){
-    this.storage.set('doctor', email);
+  guardarDoctor(dni: string){
+    this.storage.set('doctor', dni);
   }
 
   //Hacer el get usuario
@@ -42,14 +42,14 @@ export class DataLocalService {
   }
   //------------------------------------------------------------------
   //----------------------PACIENTE----------------------
-  guardarPaciente(emailPaciente: string){
-    this.storage.set('emailPaciente', emailPaciente);
+  guardarPaciente(dniPaciente: string){
+    this.storage.set('dniPaciente', dniPaciente);
   }
 
   async cargarPaciente(){
-    const email = await this.storage.get('emailPaciente');
+    const dni = await this.storage.get('dniPaciente');
 
-    this.paciente = email;
+    this.paciente = dni;
     return this.paciente;
   }
 }

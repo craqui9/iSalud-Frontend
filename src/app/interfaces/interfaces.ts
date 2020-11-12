@@ -9,9 +9,11 @@ export interface Usuario {
   _id?: string;
   rol?: string;
   nombre?: string;
-  email?: string;
+  dni?: string;
   password?: string;
   doctor?: string;
+  fecha_nacimiento?: string;
+  sexo?: string;
   __v?: number;
 }
 //--------------------------------------------------------

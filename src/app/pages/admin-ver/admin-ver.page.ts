@@ -11,7 +11,7 @@ import { Usuario } from '../../interfaces/interfaces';
 })
 export class AdminVerPage implements OnInit {
 
-  @ViewChild('correoUsuario') correoUsuario: IonInput;
+  @ViewChild('dniUsuario') dniUsuario: IonInput;
 
   usuarios: Usuario[];
   usuario: Usuario;
@@ -58,7 +58,7 @@ export class AdminVerPage implements OnInit {
   comprobarVacio(): boolean{
     let valido = true;
     
-    if(this.correoUsuario.value === ""){
+    if(this.dniUsuario.value === ""){
       valido = false;
     }
 
@@ -69,7 +69,7 @@ export class AdminVerPage implements OnInit {
   comprobarExiste(): boolean{
     let valido = false;    
 
-    if(this.usuarios.find(usu => usu.email === this.correoUsuario.value.toString())){
+    if(this.usuarios.find(usu => usu.dni === this.dniUsuario.value.toString())){
       valido = true;
     }
 
@@ -83,24 +83,27 @@ export class AdminVerPage implements OnInit {
   async buscarUsu(){
 
     var getDatos: Usuario;
-    getDatos = await this.usuarioService.buscarUsuario(this.correoUsuario.value.toString());
+    getDatos = await this.usuarioService.buscarUsuario(this.dniUsuario.value.toString());
 
     //Así meto los datos en el objeto global :3
     this.usuario = {
-      email: getDatos.email,
+      dni: getDatos.dni,
       nombre: getDatos.nombre,
       password: getDatos.password,
       doctor: getDatos.doctor,
-      rol: getDatos.rol
+      rol: getDatos.rol,
+      fecha_nacimiento: getDatos.fecha_nacimiento,
+      sexo: getDatos.sexo
     }
 
   }
 
   //Crear mensaje
   crearMensaje(){
-    var mensaje = 'Rol: ' + this.usuario.rol + '<br>Email: ' + this.usuario.email +
-                  '<br>Nombre: ' + this.usuario.nombre + 
-                  '<br>Doctor: ' + this.usuario.doctor;   
+    var mensaje = 'Rol: ' + this.usuario.rol + '<br>DNI/NIE: ' + this.usuario.dni +
+                  '<br>Nombre: ' + this.usuario.nombre + '<br>Doctor: ' + this.usuario.doctor
+                  + '<br>Fecha Nac.: ' + this.usuario.fecha_nacimiento + '<br>Sexo: ' + 
+                  this.usuario.sexo;
 
     return mensaje;
   }

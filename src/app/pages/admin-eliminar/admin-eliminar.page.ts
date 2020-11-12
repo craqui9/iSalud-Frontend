@@ -11,7 +11,7 @@ import { async } from '@angular/core/testing';
 })
 export class AdminEliminarPage implements OnInit {
 
-  @ViewChild('correoUsuario') correoUsuario: IonInput;
+  @ViewChild('dniUsuario') dniUsuario: IonInput;
 
   usuarios: Usuario[];
 
@@ -59,7 +59,7 @@ export class AdminEliminarPage implements OnInit {
   comprobarVacio(): boolean{
     let valido = true;
     
-    if(this.correoUsuario.value === ""){
+    if(this.dniUsuario.value === ""){
       valido = false;
     }
 
@@ -70,7 +70,7 @@ export class AdminEliminarPage implements OnInit {
   comprobarExiste(): boolean{
     let valido = false;    
 
-    if(this.usuarios.find(usu => usu.email === this.correoUsuario.value.toString())){
+    if(this.usuarios.find(usu => usu.dni === this.dniUsuario.value.toString())){
       valido = true;
     }
 
@@ -83,7 +83,7 @@ export class AdminEliminarPage implements OnInit {
     
     
     var getDatos: Usuario;
-    getDatos = await this.usuarioService.buscarUsuario(this.correoUsuario.value.toString());
+    getDatos = await this.usuarioService.buscarUsuario(this.dniUsuario.value.toString());
     
     if(getDatos.rol !== 'paciente'){
       valido = true;
@@ -101,7 +101,7 @@ export class AdminEliminarPage implements OnInit {
     const alert = await this.alertController.create({
       //cssClass: 'my-custom-class',
       header: 'Confirmar usuario',
-      message: 'Vas a eliminar el usuario con identificador: '+this.correoUsuario.value.toString(),
+      message: 'Vas a eliminar el usuario con identificador: '+this.dniUsuario.value.toString(),
       buttons: [
         {
           text: 'Cancelar',
@@ -110,7 +110,7 @@ export class AdminEliminarPage implements OnInit {
           handler: () => {
             
             console.log('Usuario no eliminado.');
-            this.correoUsuario.value = '';
+            this.dniUsuario.value = '';
           }
         }, {
           text: 'Aceptar',
@@ -118,7 +118,7 @@ export class AdminEliminarPage implements OnInit {
             //------------------------------//
             this.eliminarUsuario();
             this.usuarioService.mensajeToast('Usuario eliminado exitosamente.');
-            this.correoUsuario.value = '';
+            this.dniUsuario.value = '';
             //------------------------------//
           }
         }
@@ -131,7 +131,7 @@ export class AdminEliminarPage implements OnInit {
 
   //ELIMINAR USUARIO
   eliminarUsuario(){
-    this.usuarioService.eliminarUsuario(this.correoUsuario.value.toString());
+    this.usuarioService.eliminarUsuario(this.dniUsuario.value.toString());
   }
 
   //----------------------------------------------------------//

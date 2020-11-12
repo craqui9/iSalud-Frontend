@@ -46,10 +46,10 @@ export class UsuarioService {
 
   }
 
-  //Buscar usuario por email
-  buscarUsuario(email: string){
+  //Buscar usuario por dni
+  buscarUsuario(dni: string){
     return new Promise(resolve => {
-      this.http.post(`${URL}/user/email`, {email})
+      this.http.post(`${URL}/user/dni`, {dni})
                .subscribe(resp => {                     
                //console.log(resp['usuario']);
                
@@ -92,9 +92,9 @@ export class UsuarioService {
   }
 
   //Eliminar el usuario
-  eliminarUsuario(email: string){
+  eliminarUsuario(dni: string){
 
-    const data = {email};
+    const data = {dni};
 
     return new Promise(resolve => {
 
@@ -113,9 +113,9 @@ export class UsuarioService {
   }
 
   //Login
-  login(email: string, password: string){
+  login(dni: string, password: string){
 
-    const data = {email, password};
+    const data = {dni, password};
 
     return new Promise(resolve => {
 

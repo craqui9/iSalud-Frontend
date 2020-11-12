@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/interfaces';
 import { AlertController, IonInput, IonSelect, MenuController } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-admin-principal',
@@ -10,23 +11,28 @@ import { AlertController, IonInput, IonSelect, MenuController } from '@ionic/ang
 })
 export class AdminPrincipalPage implements OnInit {
 
+  fechaUsuario;
+
   usuarios: Usuario[];
   usuarioNuevo: Usuario = {
     rol: '',
     nombre: '',
-    email: '',
+    dni: '',
     password: '',
-    doctor: ''
+    doctor: '',
+    fecha_nacimiento: '',
+    sexo: ''
   };
 
 
   //Datos del formulario
   @ViewChild('selecRol') selecRol: IonSelect;
 
-  @ViewChild('correoUsuario') correoUsuario: IonInput;
+  @ViewChild('dniUsuario') dniUsuario: IonInput;
   @ViewChild('nombreUsuario') nombreUsuario: IonInput;
   @ViewChild('contraseñaUsuario') contraseñaUsuario: IonInput;
   @ViewChild('doctorUsuario') doctorUsuario: IonInput;
+  @ViewChild('sexoUsuario') sexoUsuario: IonSelect;
   //----------------------------------------------------------------//
 
   constructor(private usuarioService: UsuarioService,
@@ -56,7 +62,8 @@ export class AdminPrincipalPage implements OnInit {
   //----------------------------------------------------------------//
 
   //Metodos principales para crear usuarios
-  crearUsuario(){  
+  crearUsuario(){
+    this.fechaUsuario = moment(this.fechaUsuario).format('DD-MM-YYYY');
     
     //Actualizar el array de usuarios
     this.conseguirUsuarios();
@@ -69,16 +76,18 @@ export class AdminPrincipalPage implements OnInit {
         this.usuarioNuevo = {
           rol: this.selecRol.value,
           nombre: this.nombreUsuario.value.toString(),
-          email: this.correoUsuario.value.toString(),
+          dni: this.dniUsuario.value.toString(),
           password: this.contraseñaUsuario.value.toString(),
-          doctor: this.doctorUsuario.value.toString()
+          doctor: this.doctorUsuario.value.toString(),
+          sexo: this.sexoUsuario.value,
+          fecha_nacimiento: this.fechaUsuario
         } 
 
         //Comprobaciones
         if(!this.comprobacionPaciente()){
           this.usuarioService.mensajeToast("Por favor, rellene todos los datos.");
-        }else if(this.existeCorreo(this.usuarioNuevo)){
-          this.usuarioService.mensajeToast("El correo indicado ya está en uso.");
+        }else if(this.existedni(this.usuarioNuevo)){
+          this.usuarioService.mensajeToast("El dni indicado ya está en uso.");
         }else if(!this.existeDoctor(this.usuarioNuevo)){
           this.usuarioService.mensajeToast("El doctor indicado no existe.");
         }else{
@@ -86,29 +95,29 @@ export class AdminPrincipalPage implements OnInit {
           this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
           this.vaciarInputsPaciente();
         }
-
-        
         
       }
 
       
     }else if(this.selecRol.value === 'doctor'){
 
-      if(this.comprobacionDoctor){
+      if(this.comprobacionPaciente){
 
         //creacion del objeto usuario
         this.usuarioNuevo = {
           rol: this.selecRol.value,
           nombre: this.nombreUsuario.value.toString(),
-          email: this.correoUsuario.value.toString(),
+          dni: this.dniUsuario.value.toString(),
           password: this.contraseñaUsuario.value.toString(),
-          doctor: this.correoUsuario.value.toString()
+          doctor: this.doctorUsuario.value.toString(),
+          sexo: this.sexoUsuario.value,
+          fecha_nacimiento: this.fechaUsuario
         } 
 
-        if(!this.comprobacionDoctor()){
+        if(!this.comprobacionPaciente()){
           this.usuarioService.mensajeToast("Por favor, rellene todos los datos.");
-        }else if(this.existeCorreo(this.usuarioNuevo)){
-          this.usuarioService.mensajeToast("El correo indicado ya está en uso.");
+        }else if(this.existedni(this.usuarioNuevo)){
+          this.usuarioService.mensajeToast("El dni indicado ya está en uso.");
         }else{
           //Creacion del usuario
           this.confirmacionUsuario(this.crearMensajeConfirmacion(this.usuarioNuevo), this.usuarioNuevo);
@@ -135,9 +144,10 @@ export class AdminPrincipalPage implements OnInit {
   //Creacion del mensajes para el TOAST
   crearMensajeConfirmacion(objetoUsuario: Usuario){
 
-    var mensaje = 'Rol: ' + objetoUsuario.rol + '<br>Email: ' + objetoUsuario.email +
+    var mensaje = 'Rol: ' + objetoUsuario.rol + '<br>dni: ' + objetoUsuario.dni +
                   '<br>Nombre: ' + objetoUsuario.nombre + '<br>Contraseña: ' + objetoUsuario.password +
-                  '<br>Doctor: ' + objetoUsuario.doctor;   
+                  '<br>Doctor: ' + objetoUsuario.doctor + '<br>Fecha Nac.: ' + objetoUsuario.fecha_nacimiento + '<br>Sexo: ' + 
+                  objetoUsuario.sexo;   
 
     return mensaje;
 
@@ -181,17 +191,19 @@ export class AdminPrincipalPage implements OnInit {
   //Comprueba solo si está vacio
   comprobacionPaciente(): boolean{
 
-    let correo = this.correoUsuario.value.toString();
+    let dni = this.dniUsuario.value.toString();
     let nombre = this.nombreUsuario.value.toString();
     let contraseña = this.contraseñaUsuario.value.toString();
     let doctor = this.doctorUsuario.value.toString();
     
     //Comprobar si estan todos los datos PACIENTE
-    if(correo.trim() === ""){
+    if(dni.trim() === ""){
       return false;
     }else if(nombre.trim() === ""){
       return false;
     }else if(contraseña.trim() === ""){
+      return false;
+    }else if(this.fechaUsuario === undefined){
       return false;
     }else if(doctor.trim() === ""){
       return false;
@@ -203,34 +215,16 @@ export class AdminPrincipalPage implements OnInit {
     
 
   }
-  
-  //Comprueba solo si está vacio
-  comprobacionDoctor(): boolean{
 
-    //Comprobar si estan todos los datos DOCTOR
-    if(this.correoUsuario.value === ''){
-      return false;
-    }else if(this.nombreUsuario.value === ""){
-      return false;
-    }else if(this.contraseñaUsuario.value === ""){
-      return false;
-    }else{
-
-      return true;
-
-    }
-
-  }
-
-  //Comprueba si el correo existe
-  existeCorreo(usuario: Usuario): boolean{
+  //Comprueba si el dni existe
+  existedni(usuario: Usuario): boolean{
 
     var existe = false;
 
     //Actualizo el array de usuarios por si acaso
     this.conseguirUsuarios();
     
-    if(this.usuarios.find(usu => usu.email === usuario.email)){
+    if(this.usuarios.find(usu => usu.dni === usuario.dni)){
       existe = true;
     }    
     
@@ -246,7 +240,7 @@ export class AdminPrincipalPage implements OnInit {
     //Actualizo el array de usuarios por si acaso
     this.conseguirUsuarios();
     
-    if(this.usuarios.find(usu => usu.email === usuario.doctor)){
+    if(this.usuarios.find(usu => usu.dni === usuario.doctor)){
       existe = true;
     }    
     
@@ -258,14 +252,14 @@ export class AdminPrincipalPage implements OnInit {
 
   //-----------------------VACIAR DATOS-----------------------//
   vaciarInputsPaciente(){
-    this.correoUsuario.value = "";
+    this.dniUsuario.value = "";
     this.nombreUsuario.value = "";
     this.contraseñaUsuario.value = "";
     this.doctorUsuario.value = "";
   }
 
   vaciarInputsDoctor(){
-    this.correoUsuario.value = "";
+    this.dniUsuario.value = "";
     this.nombreUsuario.value = "";
     this.contraseñaUsuario.value = "";
   }

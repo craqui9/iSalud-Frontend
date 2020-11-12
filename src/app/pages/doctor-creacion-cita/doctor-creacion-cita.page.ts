@@ -38,8 +38,8 @@ export class DoctorCreacionCitaPage {
     identificador: 0
   }
 
-  emailDoctor: string;
-  emailPaciente: string;
+  dniDoctor: string;
+  dniPaciente: string;
 
   constructor(private menuController: MenuController,
               private dataLocal: DataLocalService,
@@ -49,15 +49,15 @@ export class DoctorCreacionCitaPage {
 
   async ionViewWillEnter() {
 
-    const emailDoc = await this.dataLocal.cargarUsuario();
-    this.emailDoctor = emailDoc;
-    this.buscarUsu(this.emailDoctor, 'doctor');
+    const dniDoc = await this.dataLocal.cargarUsuario();
+    this.dniDoctor = dniDoc;
+    this.buscarUsu(this.dniDoctor, 'doctor');
 
-    const emailPac = await this.dataLocal.cargarPaciente();
-    this.emailPaciente = emailPac;
-    this.buscarUsu(this.emailPaciente, 'paciente');
+    const dniPac = await this.dataLocal.cargarPaciente();
+    this.dniPaciente = dniPac;
+    this.buscarUsu(this.dniPaciente, 'paciente');
 
-    console.log(this.emailPaciente);
+    console.log(this.dniPaciente);
 
     this.citaService.getCitas()
         .subscribe(resp => {
@@ -74,29 +74,33 @@ export class DoctorCreacionCitaPage {
   }
 
   //Guardar el usuario
-  async buscarUsu(email, tipo){
+  async buscarUsu(dni, tipo){
 
     var getDatos: Usuario;
-    getDatos = await this.usuarioService.buscarUsuario(email);
+    getDatos = await this.usuarioService.buscarUsuario(dni);
 
     if(tipo === 'doctor'){
 
       this.usuarioDoctor = {
-        email: getDatos.email,
+        dni: getDatos.dni,
         nombre: getDatos.nombre,
         password: getDatos.password,
         doctor: getDatos.doctor,
-        rol: getDatos.rol
+        rol: getDatos.rol,
+        fecha_nacimiento: getDatos.fecha_nacimiento,
+        sexo: getDatos.sexo
       }
 
     }else if(tipo === 'paciente'){
 
       this.usuarioPaciente = {
-        email: getDatos.email,
+        dni: getDatos.dni,
         nombre: getDatos.nombre,
         password: getDatos.password,
         doctor: getDatos.doctor,
-        rol: getDatos.rol
+        rol: getDatos.rol,
+        fecha_nacimiento: getDatos.fecha_nacimiento,
+        sexo: getDatos.sexo
       }
 
     }
@@ -137,8 +141,8 @@ export class DoctorCreacionCitaPage {
 
     this.citaNueva = {
       resuelto: false,
-      usuario_paciente: this.usuarioPaciente.email,
-      usuario_doctor: this.usuarioDoctor.email,
+      usuario_paciente: this.usuarioPaciente.dni,
+      usuario_doctor: this.usuarioDoctor.dni,
       nombre_paciente: this.usuarioPaciente.nombre,
       fecha: this.fechaCita,
       hora: this.horaCita,

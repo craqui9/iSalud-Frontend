@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   @ViewChild('slidePrincipal', {static: true}) slides: IonSlides ;
 
   loginUser = {
-    email: '',
+    dni: '',
     password: ''
   };
 
@@ -38,11 +38,11 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    const valido = await this.usuarioService.login(this.loginUser.email, this.loginUser.password);
-    this.dataLocal.guardarUsuario(this.loginUser.email);
+    const valido = await this.usuarioService.login(this.loginUser.dni, this.loginUser.password);
+    this.dataLocal.guardarUsuario(this.loginUser.dni);
 
     if(!valido){
-      this.usuarioService.mensajeToast('Correo/contraseña no son correctos.');
+      this.usuarioService.mensajeToast('dni/contraseña no son correctos.');
     }
     
   }

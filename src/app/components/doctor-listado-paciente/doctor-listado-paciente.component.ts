@@ -19,7 +19,7 @@ export class DoctorListadoPacienteComponent implements OnInit {
   ngOnInit() {}
 
   clickUsuario(){
-    const mail = this.usuario.email;
+    const mail = this.usuario.dni;
 
     this.dataLocal.guardarPaciente(mail);
     

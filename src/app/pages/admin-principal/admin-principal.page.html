@@ -49,9 +49,9 @@
       
           <!-- Entrada de datos -->
           <ion-item>
-            <ion-label>Correo electrónico:</ion-label>
-            <ion-input slot="end" type="text" placeholder="Ejemplo@iSalud.com"
-                       #correoUsuario required></ion-input>
+            <ion-label>DNI/NIE:</ion-label>
+            <ion-input slot="end" type="text" placeholder="12345678X"
+                       #dniUsuario required></ion-input>
           </ion-item>
       
           <ion-item>
@@ -65,10 +65,26 @@
             <ion-input slot="end" type="text" placeholder="Contraseña"
                        #contraseñaUsuario required></ion-input>
           </ion-item>
+
+          <ion-item>
+            <ion-label>Sexo:</ion-label>
+            <ion-select #sexoUsuario value="hombre">
+              <ion-select-option value="mujer">Mujer</ion-select-option>
+              <ion-select-option value="hombre">Hombre</ion-select-option>
+              <ion-select-option value="otro">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fecha nacimiento:</ion-label>
+            <ion-datetime [(ngModel)]="fechaUsuario" displayFormat="DD-MM-YYYY"
+                          min="1920-01-01" max="2199-12-31" name="fechaUsuario"
+                          placeholder="Selecciona una fecha"></ion-datetime>
+          </ion-item>
       
-          <ion-item *ngIf="selecRol.value === 'paciente'">
-            <ion-label>Correo del Doctor:</ion-label>
-            <ion-input slot="end" type="text" placeholder="Doctor1@iSalud.com"
+          <ion-item>
+            <ion-label>DNI/NIE Doctor:</ion-label>
+            <ion-input slot="end" type="text" placeholder="12345678X"
                        #doctorUsuario required></ion-input>
           </ion-item>
           
@@ -82,13 +98,5 @@
     </ion-row>
 
   </form>
-
-  <!-- Lista de usuarios -->
-  <!-- <ion-list>
-    <ion-item *ngFor="let usuario of usuarios">
-      <ion-label>Nombre: {{usuario.nombre}}</ion-label>
-      <ion-label>Email: {{usuario.email}}</ion-label>
-    </ion-item>
-  </ion-list> -->
 
 </ion-content>

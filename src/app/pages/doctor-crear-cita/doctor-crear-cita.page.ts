@@ -30,11 +30,11 @@ export class DoctorCrearCitaPage{
     //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
     async ionViewWillEnter() {
 
-      const email = await this.dataLocal.cargarUsuario();
-      this.doctor = email;
+      const dni = await this.dataLocal.cargarUsuario();
+      this.doctor = dni;
   
       //Consigo el usuario
-      await this.buscarUsu(email);
+      await this.buscarUsu(dni);
       
       await this.conseguirUsuarios();
       console.log(this.usuarios);
@@ -59,17 +59,19 @@ export class DoctorCrearCitaPage{
     }
 
     //Guardar el usuario
-    async buscarUsu(email){
+    async buscarUsu(dni){
 
       var getDatos: Usuario;
-      getDatos = await this.usuarioService.buscarUsuario(email);
+      getDatos = await this.usuarioService.buscarUsuario(dni);
 
       this.usuario = {
-        email: getDatos.email,
+        dni: getDatos.dni,
         nombre: getDatos.nombre,
         password: getDatos.password,
         doctor: getDatos.doctor,
-        rol: getDatos.rol
+        rol: getDatos.rol,
+        fecha_nacimiento: getDatos.fecha_nacimiento,
+        sexo: getDatos.sexo
       }
   }
 
