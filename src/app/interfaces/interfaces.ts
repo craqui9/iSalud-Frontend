@@ -61,7 +61,7 @@ export interface Tratamiento {
   usuario_doctor?: string;
   nombre_tratamiento?: string;
   descripcion?: string;
-  fecha_inicio: string;
+  fecha_inicio?: string;
   fecha_final?: string;
   identificador?: number;
   __v?: number;
