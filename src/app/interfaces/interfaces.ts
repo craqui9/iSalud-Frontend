@@ -48,6 +48,24 @@ export interface Cita {
   identificador?: number;
   __v?: number;
 }
+//--------------------------------------------------------
+//----------------------------TRATAMIENTO----------------------------
+export interface RespuestaTratamiento {
+  ok: boolean;
+  tratamientos: Tratamiento[];
+}
+
+export interface Tratamiento {
+  _id?: string;
+  usuario_paciente?: string;
+  usuario_doctor?: string;
+  nombre_tratamiento?: string;
+  descripcion?: string;
+  fecha_inicio: string;
+  fecha_final?: string;
+  identificador?: number;
+  __v?: number;
+}
 
 //crear las interfaces necesarias usando el JSON to TS
 

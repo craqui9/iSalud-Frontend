@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DoctorCreacionTratamientoPageRoutingModule } from './doctor-creacion-tratamiento-routing.module';
 
 import { DoctorCreacionTratamientoPage } from './doctor-creacion-tratamiento.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DoctorCreacionTratamientoPageRoutingModule
+    DoctorCreacionTratamientoPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [DoctorCreacionTratamientoPage]
 })

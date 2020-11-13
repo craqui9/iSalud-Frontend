@@ -1,6 +1,26 @@
+<ion-menu side="start" menuId="menuDoctor" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú Doctor</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <app-menu-doctor></app-menu-doctor>
+
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
 <ion-header>
   <ion-toolbar>
-    <ion-title>doctor-creacion-tratamiento</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>(logo de iSalud) iSalud</ion-title>
   </ion-toolbar>
 </ion-header>
 
