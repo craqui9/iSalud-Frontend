@@ -27,7 +27,6 @@ export class NoticiaService {
 
       this.http.post(`${URL}/noticias/create`, noticia)
                .subscribe(resp => {
-                console.log(resp);
                 
                 if(resp['ok']){
                   resolve(true);

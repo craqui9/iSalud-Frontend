@@ -57,8 +57,6 @@ export class DoctorCreacionCitaPage {
     this.dniPaciente = dniPac;
     this.buscarUsu(this.dniPaciente, 'paciente');
 
-    console.log(this.dniPaciente);
-
     this.citaService.getCitas()
         .subscribe(resp => {
           this.citas = resp.citas;

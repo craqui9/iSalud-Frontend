@@ -8,6 +8,7 @@ export class DataLocalService {
   dni: string;
   doctor: string;
   paciente: string;
+  ide: number;
 
   constructor(private storage: Storage) { }
 
@@ -51,5 +52,17 @@ export class DataLocalService {
 
     this.paciente = dni;
     return this.paciente;
+  }
+  //------------------------------------------------------------------
+  //----------------------CITA----------------------
+  guardarIdentCita(ide: number){
+    this.storage.set('ideCita', ide);
+  }
+
+  async cargarIdentCita(){
+    const id = await this.storage.get('ideCita');
+
+    this.ide = id;
+    return this.ide;
   }
 }

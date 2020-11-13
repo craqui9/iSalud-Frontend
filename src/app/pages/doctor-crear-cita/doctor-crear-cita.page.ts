@@ -37,8 +37,6 @@ export class DoctorCrearCitaPage{
       await this.buscarUsu(dni);
       
       await this.conseguirUsuarios();
-      console.log(this.usuarios);
-      
     }
 
     async conseguirUsuarios(){

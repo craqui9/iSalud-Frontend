@@ -1,11 +1,11 @@
-<ion-card>
+<ion-card (click)="clickCita()">
 
   <ion-card-header>
-    <ion-card-title (click)="clickCita()">{{cita.usuario_paciente}}</ion-card-title>
+    <ion-card-title>Nombre: {{cita.nombre_paciente}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    <p (click)="clickCita()">{{cita.nombre_paciente}}</p>
+    <p>Fecha: {{cita.fecha}} --- Hora: {{cita.hora}}</p>
   </ion-card-content>
 
 </ion-card>

@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { MenuController } from '@ionic/angular';
 import { Usuario, Cita } from '../../interfaces/interfaces';
 import { CitaService } from '../../services/cita.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-doctor-principal',
@@ -23,6 +24,7 @@ export class DoctorPrincipalPage{
   doctor: string;
 
   citas: Cita[] = [];
+  citasHoy: Cita[] = [];
 
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
@@ -38,7 +40,10 @@ export class DoctorPrincipalPage{
     //Consigo el usuario
     await this.buscarUsu(dni);
 
-    this.cargarCitas();
+    await this.cargarCitas();
+
+    this.fechaHoy();
+    this.cargarCitasHoy();
     
   }
   
@@ -73,8 +78,33 @@ export class DoctorPrincipalPage{
                 getDatos = resp;
               })
 
+    
     this.citas = getDatos;
     
+  }
+
+  //fecha de hoy
+  fechaHoy(){
+
+    let hoy = new Date;
+    let fecha = hoy.toISOString();
+    fecha = moment(hoy).format('DD-MM-YYYY');
+
+    return fecha;
+    
+  }
+
+  //citas con la fecha de hoy
+  cargarCitasHoy(){
+
+    this.citas.forEach(cita => {
+      
+      if(cita.fecha === this.fechaHoy()){
+        this.citasHoy.push(cita);
+      }
+
+    });
+
   }
 
 }

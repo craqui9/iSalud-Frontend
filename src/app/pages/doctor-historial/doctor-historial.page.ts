@@ -39,7 +39,6 @@ export class DoctorHistorialPage {
       await this.buscarUsu(dni);
       
       await this.conseguirUsuarios();
-      console.log(this.usuarios);
       
     }
 

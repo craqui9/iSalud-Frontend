@@ -26,8 +26,12 @@
 
 <ion-content>
 
-  <ion-title>Bienvenido {{usuario.nombre}}</ion-title>
+  <br>
+  <ion-title color="white" class="ion-text-right">Bienvenido {{usuario.nombre}}</ion-title>
+  <br>
 
-  <app-doctor-listado-citas [citas]="citas"></app-doctor-listado-citas>
+  <ion-title color="primary" class="ion-text-center">Citas de hoy</ion-title>
+
+  <app-doctor-listado-citas [citas]="citasHoy"></app-doctor-listado-citas>
 
 </ion-content>
