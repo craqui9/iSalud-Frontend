@@ -30,8 +30,7 @@ export class DoctorListadoPacienteComponent implements OnInit {
       this.navController.navigateRoot('doctor-creacion-cita', {animated: true});      
     }else if(this.modo === 'historial'){
       //Enrutar a historial
-      console.log('historial xd');
-      
+      this.navController.navigateRoot('doctor-vista-historial', {animated: true});
     }
   }
 

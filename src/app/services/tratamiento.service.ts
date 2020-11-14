@@ -37,8 +37,16 @@ export class TratamientoService {
 
   }
 
-  comprobar(){
-    console.log('comprobar');
-    
+  //Listar tratamientos por paciente
+  tratamientosPaciente(usuario_paciente: string){
+
+    return new Promise(resolve => {
+      this.http.post(`${URL}/tratamientos/paciente`, {usuario_paciente})
+          .subscribe(resp => {
+
+            resolve(resp['tratamientos']);
+          });
+    });
+
   }
 }

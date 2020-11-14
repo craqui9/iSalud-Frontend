@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'doctor-creacion-tratamiento',
     loadChildren: () => import('./pages/doctor-creacion-tratamiento/doctor-creacion-tratamiento.module').then( m => m.DoctorCreacionTratamientoPageModule)
   },
+  {
+    path: 'doctor-vista-historial',
+    loadChildren: () => import('./pages/doctor-vista-historial/doctor-vista-historial.module').then( m => m.DoctorVistaHistorialPageModule)
+  },
 
 
 ];

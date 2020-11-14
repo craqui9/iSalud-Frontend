@@ -1,0 +1,35 @@
+<ion-menu side="start" menuId="menuDoctor" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú Doctor</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <app-menu-doctor></app-menu-doctor>
+
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>(logo de iSalud) iSalud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <br>
+  <ion-title color="primary" class="ion-text-center">Historial de {{usuario.nombre}}</ion-title>
+
+  <app-doctor-listado-tratamientos [tratamientos]="tratamientos">
+  </app-doctor-listado-tratamientos>
+
+</ion-content>

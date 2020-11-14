@@ -1,11 +1,14 @@
-<ion-card>
+<ion-card  (click)="clickUsuario()">
 
   <ion-card-header>
-    <ion-card-title (click)="clickUsuario()">{{usuario.nombre}}</ion-card-title>
+    <ion-card-title>{{usuario.nombre}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    <p (click)="clickUsuario()">{{usuario.dni}}</p>
+    <p>Fecha Nacim.: {{usuario.fecha_nacimiento}}</p>
+    <p>Telf.: {{usuario.telefono}}</p>
+    <p>Sexo: {{usuario.sexo}}</p>
+    <p>DNI/NIE: {{usuario.dni}}</p>
   </ion-card-content>
 
 </ion-card>
