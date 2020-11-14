@@ -14,6 +14,7 @@ export interface Usuario {
   doctor?: string;
   fecha_nacimiento?: string;
   sexo?: string;
+  telefono?: string;
   __v?: number;
 }
 //--------------------------------------------------------

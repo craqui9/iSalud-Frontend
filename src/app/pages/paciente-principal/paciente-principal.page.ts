@@ -52,7 +52,8 @@ export class PacientePrincipalPage{
         doctor: getDatos.doctor,
         rol: getDatos.rol,
         fecha_nacimiento: getDatos.fecha_nacimiento,
-        sexo: getDatos.sexo
+        sexo: getDatos.sexo,
+        telefono: getDatos.telefono
       }
     }else{
       this.doctor = {
@@ -62,7 +63,8 @@ export class PacientePrincipalPage{
         doctor: getDatos.doctor,
         rol: getDatos.rol,
         fecha_nacimiento: getDatos.fecha_nacimiento,
-        sexo: getDatos.sexo
+        sexo: getDatos.sexo,
+        telefono: getDatos.telefono
       }
     }
     

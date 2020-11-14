@@ -21,7 +21,8 @@ export class AdminPrincipalPage implements OnInit {
     password: '',
     doctor: '',
     fecha_nacimiento: '',
-    sexo: ''
+    sexo: '',
+    telefono: ''
   };
 
 
@@ -33,6 +34,7 @@ export class AdminPrincipalPage implements OnInit {
   @ViewChild('contraseñaUsuario') contraseñaUsuario: IonInput;
   @ViewChild('doctorUsuario') doctorUsuario: IonInput;
   @ViewChild('sexoUsuario') sexoUsuario: IonSelect;
+  @ViewChild('telefonoUsuario') telefonoUsuario: IonInput;
   //----------------------------------------------------------------//
 
   constructor(private usuarioService: UsuarioService,
@@ -80,7 +82,8 @@ export class AdminPrincipalPage implements OnInit {
           password: this.contraseñaUsuario.value.toString(),
           doctor: this.doctorUsuario.value.toString(),
           sexo: this.sexoUsuario.value,
-          fecha_nacimiento: this.fechaUsuario
+          fecha_nacimiento: this.fechaUsuario,
+          telefono: this.telefonoUsuario.value.toString()
         } 
 
         //Comprobaciones
@@ -111,7 +114,8 @@ export class AdminPrincipalPage implements OnInit {
           password: this.contraseñaUsuario.value.toString(),
           doctor: this.doctorUsuario.value.toString(),
           sexo: this.sexoUsuario.value,
-          fecha_nacimiento: this.fechaUsuario
+          fecha_nacimiento: this.fechaUsuario,
+          telefono: this.telefonoUsuario.value.toString()
         } 
 
         if(!this.comprobacionPaciente()){
@@ -147,7 +151,7 @@ export class AdminPrincipalPage implements OnInit {
     var mensaje = 'Rol: ' + objetoUsuario.rol + '<br>dni: ' + objetoUsuario.dni +
                   '<br>Nombre: ' + objetoUsuario.nombre + '<br>Contraseña: ' + objetoUsuario.password +
                   '<br>Doctor: ' + objetoUsuario.doctor + '<br>Fecha Nac.: ' + objetoUsuario.fecha_nacimiento + '<br>Sexo: ' + 
-                  objetoUsuario.sexo;   
+                  objetoUsuario.sexo + '<br>Telefono: ' + objetoUsuario.telefono;   
 
     return mensaje;
 
@@ -195,6 +199,7 @@ export class AdminPrincipalPage implements OnInit {
     let nombre = this.nombreUsuario.value.toString();
     let contraseña = this.contraseñaUsuario.value.toString();
     let doctor = this.doctorUsuario.value.toString();
+    let tel = this.telefonoUsuario.value.toString();
     
     //Comprobar si estan todos los datos PACIENTE
     if(dni.trim() === ""){
@@ -206,6 +211,8 @@ export class AdminPrincipalPage implements OnInit {
     }else if(this.fechaUsuario === undefined){
       return false;
     }else if(doctor.trim() === ""){
+      return false;
+    }else if(tel.trim() === ""){
       return false;
     }else{
 
@@ -256,12 +263,15 @@ export class AdminPrincipalPage implements OnInit {
     this.nombreUsuario.value = "";
     this.contraseñaUsuario.value = "";
     this.doctorUsuario.value = "";
+    this.telefonoUsuario.value = "";
   }
 
   vaciarInputsDoctor(){
     this.dniUsuario.value = "";
     this.nombreUsuario.value = "";
     this.contraseñaUsuario.value = "";
+    this.doctorUsuario.value = "";
+    this.telefonoUsuario.value = "";
   }
 
 }

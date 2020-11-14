@@ -72,21 +72,9 @@ export class DoctorHistorialPage {
         doctor: getDatos.doctor,
         rol: getDatos.rol,
         fecha_nacimiento: getDatos.fecha_nacimiento,
-        sexo: getDatos.sexo
+        sexo: getDatos.sexo,
+        telefono: getDatos.telefono
       }
   }
 
-
-
-
-  //-----------------------------------------------------------------------//
-  //clickar sobre el paciente
-  clickTarjeta(){
-
-  }
-
-  //Obtener datos de la tarjeta
-  obtenTarjeta(){
-    //this.targeta.
-  }
 }

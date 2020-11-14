@@ -86,7 +86,8 @@ export class DoctorCreacionCitaPage {
         doctor: getDatos.doctor,
         rol: getDatos.rol,
         fecha_nacimiento: getDatos.fecha_nacimiento,
-        sexo: getDatos.sexo
+        sexo: getDatos.sexo,
+        telefono: getDatos.telefono
       }
 
     }else if(tipo === 'paciente'){
@@ -98,7 +99,8 @@ export class DoctorCreacionCitaPage {
         doctor: getDatos.doctor,
         rol: getDatos.rol,
         fecha_nacimiento: getDatos.fecha_nacimiento,
-        sexo: getDatos.sexo
+        sexo: getDatos.sexo,
+        telefono: getDatos.telefono
       }
 
     }

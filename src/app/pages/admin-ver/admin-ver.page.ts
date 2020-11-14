@@ -93,7 +93,8 @@ export class AdminVerPage implements OnInit {
       doctor: getDatos.doctor,
       rol: getDatos.rol,
       fecha_nacimiento: getDatos.fecha_nacimiento,
-      sexo: getDatos.sexo
+      sexo: getDatos.sexo,
+      telefono: getDatos.telefono
     }
 
   }
@@ -103,7 +104,7 @@ export class AdminVerPage implements OnInit {
     var mensaje = 'Rol: ' + this.usuario.rol + '<br>DNI/NIE: ' + this.usuario.dni +
                   '<br>Nombre: ' + this.usuario.nombre + '<br>Doctor: ' + this.usuario.doctor
                   + '<br>Fecha Nac.: ' + this.usuario.fecha_nacimiento + '<br>Sexo: ' + 
-                  this.usuario.sexo;
+                  this.usuario.sexo + '<br>Telefono: ' + this.usuario.telefono;
 
     return mensaje;
   }
