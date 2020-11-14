@@ -98,9 +98,11 @@ export class DoctorPrincipalPage{
   cargarCitasHoy(){
 
     this.citas.forEach(cita => {
-      
-      if(cita.fecha === this.fechaHoy()){
-        this.citasHoy.push(cita);
+
+      if(cita.resuelto === false){
+        if(cita.fecha === this.fechaHoy()){
+          this.citasHoy.push(cita);
+        }
       }
 
     });

@@ -26,7 +26,6 @@ export class TratamientoService {
 
       this.http.post(`${URL}/tratamientos/create`, tratamiento)
                .subscribe(resp => {
-                
                 if(resp['ok']){
                   resolve(true);
                 }else{
@@ -36,5 +35,10 @@ export class TratamientoService {
 
     });
 
+  }
+
+  comprobar(){
+    console.log('comprobar');
+    
   }
 }

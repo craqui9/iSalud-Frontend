@@ -119,7 +119,7 @@ export class DoctorCreacionCitaPage {
 
     //Comprobaciones
     if(this.comprobarVacio()){
-        //ESTO ES LO BUENO PERO HAY QUE HACER ANTES LAS COMPROBACIONES
+
         this.crearObjeto();
         //console.log(this.citaNueva);
         this.citaService.crearCita(this.citaNueva);

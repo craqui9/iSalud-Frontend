@@ -64,5 +64,24 @@ export class CitaService {
 
   }
 
+  //Actualizar resuelto a true
+  actualizarResuelto(identificador: number){
+
+    return new Promise(resolve => {
+
+      this.http.post(`${URL}/citas/resuelto`, {identificador})
+               .subscribe(resp => {
+                
+                if(resp['ok']){
+                  resolve(true);
+                }else{
+                  resolve(false);
+                }
+               });
+
+    });
+
+  }
+
 
 }
