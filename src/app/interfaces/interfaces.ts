@@ -65,6 +65,7 @@ export interface Tratamiento {
   fecha_inicio?: string;
   fecha_final?: string;
   identificador?: number;
+  resuelto?: boolean;
   __v?: number;
 }
 

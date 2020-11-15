@@ -27,6 +27,7 @@ export class DoctorCreacionTratamientoPage {
     descripcion: '',
     fecha_inicio: '',
     fecha_final: '',
+    resuelto: false,
     identificador: 0
   }
 
@@ -97,7 +98,8 @@ export class DoctorCreacionTratamientoPage {
       descripcion: this.descrTratamiento.value,
       fecha_inicio: this.fechaInic,
       fecha_final: this.fechaFin,
-      identificador: this.identificadorCita
+      identificador: this.identificadorCita,
+      resuelto: false,
     }
 
   }
