@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataLocalService } from '../../services/data-local.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { Usuario } from '../../interfaces/interfaces';
+import { Usuario, Cita, Tratamiento } from '../../interfaces/interfaces';
 import { MenuController } from '@ionic/angular';
+import { CitaService } from '../../services/cita.service';
+import * as moment from 'moment';
+import { TratamientoService } from '../../services/tratamiento.service';
 
 @Component({
   selector: 'app-paciente-principal',
@@ -11,12 +14,25 @@ import { MenuController } from '@ionic/angular';
 })
 export class PacientePrincipalPage{
 
-  usuario: Usuario;
+  editable: string = 'true';
+
+  usuario: Usuario = {
+    nombre: ''
+  };
   doctor: Usuario;
+
+  tratamientos: Tratamiento[] = [];
+
+  citas: Cita[] = [];
+  citasHoy: Cita[] = [];
+  citasNoResueltas: Cita[] = [];
+
 
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
-              private menuController: MenuController) { }
+              private menuController: MenuController,
+              private citaService: CitaService,
+              private tratamientoService: TratamientoService) { }
 
   //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
   async ionViewWillEnter() {
@@ -30,12 +46,22 @@ export class PacientePrincipalPage{
     
     //Guardar el doctor en el local storage
     this.dataLocal.guardarDoctor(this.doctor.dni);
+
+    //Citas
+    await this.cargarCitas();
+
+    this.fechaHoy();
+    this.cargarCitasHoy();
+    this.cargarCitasNoResueltas();
     
+    //tratamientos
+    await this.cargarTratamientos();
   }
-    //Abrir el menu
-    mostrarMenu(){
-      this.menuController.open('menuPaciente');
-    }
+
+  //Abrir el menu
+  mostrarMenu(){
+    this.menuController.open('menuPaciente');
+  }
 
   //Guardar el usuario
   async buscarUsu(dni, bandera){
@@ -68,6 +94,70 @@ export class PacientePrincipalPage{
       }
     }
     
+  }
+
+  //Cargar las citas
+  async cargarCitas(){
+
+    let getDatos;
+    await this.citaService.citasPaciente(this.usuario.dni)
+              .then(resp => {
+                getDatos = resp;
+              })
+
+    
+    this.citas = getDatos;
+    
+  }
+
+  //fecha de hoy
+  fechaHoy(){
+
+    let hoy = new Date;
+    let fecha = hoy.toISOString();
+    fecha = moment(hoy).format('DD-MM-YYYY');
+
+    return fecha;
+    
+  }
+
+  //citas con la fecha de hoy
+  cargarCitasHoy(){
+
+    this.citas.forEach(cita => {
+
+      if(cita.resuelto === false){
+        if(cita.fecha === this.fechaHoy()){
+          this.citasHoy.push(cita);
+        }
+      }
+
+    });
+
+  }
+
+  //citas no resueltas todavia
+  cargarCitasNoResueltas(){
+
+    this.citas.forEach(cita => {
+      if(cita.resuelto === false){
+        this.citasNoResueltas.push(cita);
+      }
+    });
+
+  }
+
+  //tratamientos
+  async cargarTratamientos(){
+
+    let getDatos;
+    await this.tratamientoService.tratamientosPaciente(this.usuario.dni)
+              .then(resp => {
+                getDatos = resp;
+              })
+
+    
+    this.tratamientos = getDatos;
 
   }
 

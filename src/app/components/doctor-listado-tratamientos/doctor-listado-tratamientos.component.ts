@@ -9,6 +9,7 @@ import { Tratamiento } from '../../interfaces/interfaces';
 export class DoctorListadoTratamientosComponent implements OnInit {
 
   @Input() tratamientos: Tratamiento[] = [];
+  @Input() editable: String;
 
   constructor() { }
 

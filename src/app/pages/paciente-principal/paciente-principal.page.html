@@ -26,6 +26,43 @@
 
 <ion-content>
 
-   <ion-title mode="md">paciente</ion-title>
+  <br>
+    <ion-title mode="md" color="white" class="ion-text-right">Bienvenido {{usuario.nombre}}</ion-title>
+  <br>
+
+  <ion-title mode="md" color="primary" class="ion-text-center">Tratamientos activos</ion-title>
+  
+  <div *ngIf="tratamientos.length === 0">
+    <br>
+    <p class="ion-text-center">
+      No hay tratamientos activos
+    </p>
+  </div>
+
+  <app-doctor-listado-tratamientos [editable]="editable" [tratamientos]="tratamientos"></app-doctor-listado-tratamientos>
+
+
+  <ion-title mode="md" color="primary" class="ion-text-center">Citas de hoy</ion-title>
+  
+  <div *ngIf="citasHoy.length === 0">
+    <br>
+    <p class="ion-text-center">
+      No quedan citas para hoy
+    </p>
+  </div>
+
+  <app-doctor-listado-citas [citas]="citasHoy"></app-doctor-listado-citas>
+
+
+  <ion-title mode="md" color="primary" class="ion-text-center">Próximas citas</ion-title>
+  
+  <div *ngIf="citasNoResueltas.length === 0">
+    <br>
+    <p class="ion-text-center">
+      No quedan citas sin resolver
+    </p>
+  </div>
+  
+  <app-doctor-listado-citas [citas]="citasNoResueltas"></app-doctor-listado-citas>
 
 </ion-content>

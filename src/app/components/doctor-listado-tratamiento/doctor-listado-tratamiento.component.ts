@@ -9,9 +9,20 @@ import { Tratamiento } from '../../interfaces/interfaces';
 export class DoctorListadoTratamientoComponent implements OnInit {
 
   @Input() tratamiento: Tratamiento;
+  @Input() editable: String;
 
   constructor() { }
 
   ngOnInit() {}
+
+  onClick(){
+
+    if(this.editable === "true"){
+      console.log('true');
+    }else{
+      console.log('false');
+    }
+
+  }
 
 }

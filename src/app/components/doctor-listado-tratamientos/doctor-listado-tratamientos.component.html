@@ -4,7 +4,7 @@
     <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
              *ngFor="let tratamiento of tratamientos; let i = index">
 
-      <app-doctor-listado-tratamiento [tratamiento]="tratamiento">
+      <app-doctor-listado-tratamiento [editable]="editable" [tratamiento]="tratamiento">
       </app-doctor-listado-tratamiento>
       
     </ion-col>

@@ -11,6 +11,8 @@ import { Tratamiento, Usuario } from '../../interfaces/interfaces';
   styleUrls: ['./doctor-vista-historial.page.scss'],
 })
 export class DoctorVistaHistorialPage {
+  
+  editable: string = 'false';
 
   tratamientos: Tratamiento[] = [];
   usuario: Usuario = {
