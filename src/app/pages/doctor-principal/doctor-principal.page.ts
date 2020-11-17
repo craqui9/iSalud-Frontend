@@ -25,6 +25,7 @@ export class DoctorPrincipalPage{
 
   citas: Cita[] = [];
   citasHoy: Cita[] = [];
+  citasEditable: boolean = true;
 
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,

@@ -15,12 +15,14 @@ import { TratamientoService } from '../../services/tratamiento.service';
 export class PacientePrincipalPage{
 
   editable: string = 'true';
+  citasEditable: boolean = false;
 
   usuario: Usuario = {
     nombre: ''
   };
   doctor: Usuario;
 
+  trata: Tratamiento[] = [];
   tratamientos: Tratamiento[] = [];
 
   citas: Cita[] = [];
@@ -56,6 +58,7 @@ export class PacientePrincipalPage{
     
     //tratamientos
     await this.cargarTratamientos();
+    this.cargarTratamientosNoResueltos();
   }
 
   //Abrir el menu
@@ -157,7 +160,17 @@ export class PacientePrincipalPage{
               })
 
     
-    this.tratamientos = getDatos;
+    this.trata = getDatos;
+
+  }
+
+  cargarTratamientosNoResueltos(){
+
+    this.trata.forEach(tratamiento => {
+      if(tratamiento.resuelto === false){
+        this.tratamientos.push(tratamiento);
+      }
+    });
 
   }
 

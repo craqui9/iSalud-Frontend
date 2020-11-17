@@ -12,12 +12,15 @@ import { Tratamiento, Usuario } from '../../interfaces/interfaces';
 })
 export class DoctorVistaHistorialPage {
   
-  editable: string = 'false';
+  editableFalse: string = 'false';
+  editableTrue: string = 'true';
 
-  tratamientos: Tratamiento[] = [];
   usuario: Usuario = {
     nombre: ''
   }
+  tratamientos: Tratamiento[] = [];
+  tratamientosAbiertos: Tratamiento[] = [];
+  tratamientosCerrados: Tratamiento[] = [];
 
   dniPaciente;
 
@@ -34,6 +37,9 @@ export class DoctorVistaHistorialPage {
     this.buscarUsu(this.dniPaciente);
 
     await this.cargarTratamientos();
+
+    this.getAbiertos();
+    this.getCerrados();
 
   }
 
@@ -60,7 +66,7 @@ export class DoctorVistaHistorialPage {
     }
   }
 
-    //Cargar las citas
+    //Cargar tratamientos
     async cargarTratamientos(){
 
       let getDatos;
@@ -72,6 +78,32 @@ export class DoctorVistaHistorialPage {
       
       this.tratamientos = getDatos;
       
+    }
+
+    //tratamientos abiertos
+    getAbiertos(){
+
+      this.tratamientos.forEach(tratamiento => {
+        
+        if(tratamiento.resuelto === false){
+          this.tratamientosAbiertos.push(tratamiento);
+        }
+
+      });
+
+    }
+
+    //tratamientos cerrados
+    getCerrados(){
+
+      this.tratamientos.forEach(tratamiento => {
+        
+        if(tratamiento.resuelto === true){
+          this.tratamientosCerrados.push(tratamiento);
+        }
+
+      });
+
     }
 
 }

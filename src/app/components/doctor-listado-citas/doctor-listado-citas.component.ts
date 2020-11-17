@@ -9,6 +9,7 @@ import { Cita } from '../../interfaces/interfaces';
 export class DoctorListadoCitasComponent implements OnInit {
 
   @Input() citas: Cita[] = [];
+  @Input() citasEditable: boolean;
 
   constructor() { }
 

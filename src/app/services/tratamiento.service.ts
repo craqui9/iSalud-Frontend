@@ -49,4 +49,23 @@ export class TratamientoService {
     });
 
   }
+
+  //Actualizar resuelto a true
+  actualizarResuelto(identificador: number){
+
+    return new Promise(resolve => {
+
+      this.http.post(`${URL}/tratamientos/resuelto`, {identificador})
+               .subscribe(resp => {
+                
+                if(resp['ok']){
+                  resolve(true);
+                }else{
+                  resolve(false);
+                }
+               });
+
+    });
+
+  }
 }

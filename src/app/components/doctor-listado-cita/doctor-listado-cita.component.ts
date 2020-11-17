@@ -11,6 +11,7 @@ import { NavController } from '@ionic/angular';
 export class DoctorListadoCitaComponent implements OnInit {
 
   @Input() cita: Cita;
+  @Input() citasEditable: boolean;
 
   constructor(private dataLocal: DataLocalService,
               private navController: NavController) { }
@@ -19,11 +20,13 @@ export class DoctorListadoCitaComponent implements OnInit {
 
   clickCita(){
     
-    this.dataLocal.guardarPaciente(this.cita.usuario_paciente);
-    this.dataLocal.guardarIdentCita(this.cita.identificador);
-
-    //navegar a creacion tratamiento
-    this.navController.navigateRoot('doctor-creacion-tratamiento', {animated: true});
+    if(this.citasEditable === true){
+      this.dataLocal.guardarPaciente(this.cita.usuario_paciente);
+      this.dataLocal.guardarIdentCita(this.cita.identificador);
+  
+      //navegar a creacion tratamiento
+      this.navController.navigateRoot('doctor-creacion-tratamiento', {animated: true});
+    }
 
   }
 

@@ -51,7 +51,7 @@
     </p>
   </div>
 
-  <app-doctor-listado-citas [citas]="citasHoy"></app-doctor-listado-citas>
+  <app-doctor-listado-citas [citasEditable]="citasEditable" [citas]="citasHoy"></app-doctor-listado-citas>
 
 
   <ion-title mode="md" color="primary" class="ion-text-center">Próximas citas</ion-title>
@@ -63,6 +63,6 @@
     </p>
   </div>
   
-  <app-doctor-listado-citas [citas]="citasNoResueltas"></app-doctor-listado-citas>
+  <app-doctor-listado-citas [citasEditable]="citasEditable" [citas]="citasNoResueltas"></app-doctor-listado-citas>
 
 </ion-content>

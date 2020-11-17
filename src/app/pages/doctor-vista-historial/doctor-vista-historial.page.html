@@ -29,7 +29,28 @@
   <br>
    <ion-title mode="md" color="primary" class="ion-text-center">Historial de {{usuario.nombre}}</ion-title>
 
-  <app-doctor-listado-tratamientos [editable]="editable" [tratamientos]="tratamientos">
+   <p class="casos">
+      Casos abiertos
+   </p>
+
+   <div *ngIf="tratamientosAbiertos.length === 0">
+     <p class="ion-text-center">No hay casos abiertos</p>
+   </div>
+
+  <app-doctor-listado-tratamientos [editable]="editableTrue" [tratamientos]="tratamientosAbiertos">
   </app-doctor-listado-tratamientos>
+
+  <!-- ------------------------------------------ -->
+
+  <p class="casos">
+    Casos cerrados
+ </p>
+
+ <div *ngIf="tratamientosCerrados.length === 0">
+  <p class="ion-text-center">No hay casos cerrados</p>
+</div>
+
+ <app-doctor-listado-tratamientos [editable]="editableFalse" [tratamientos]="tratamientosCerrados">
+</app-doctor-listado-tratamientos>
 
 </ion-content>
