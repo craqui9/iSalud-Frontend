@@ -25,7 +25,7 @@ export class DoctorListadoTratamientoComponent implements OnInit {
 
     if(this.editable === "true"){
 
-      this.actualizar();      
+      this.actualizar();
 
     }else{
       console.log('');
@@ -54,6 +54,7 @@ export class DoctorListadoTratamientoComponent implements OnInit {
             //------------------------------//
             this.tratamientoService.actualizarResuelto(this.tratamiento.identificador);
             this.usuarioService.mensajeToast('Tratamiento resuelto.');
+            window.location.reload();
             //------------------------------//
           }
         }

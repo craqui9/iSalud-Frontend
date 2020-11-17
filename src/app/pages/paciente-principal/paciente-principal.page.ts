@@ -29,7 +29,6 @@ export class PacientePrincipalPage{
   citasHoy: Cita[] = [];
   citasNoResueltas: Cita[] = [];
 
-
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
               private menuController: MenuController,
@@ -60,6 +59,8 @@ export class PacientePrincipalPage{
     await this.cargarTratamientos();
     this.cargarTratamientosNoResueltos();
   }
+
+  
 
   //Abrir el menu
   mostrarMenu(){
