@@ -31,4 +31,8 @@ export class MenuPacienteComponent implements OnInit {
     this.navController.navigateRoot('ver-noticias-paciente', {animated: false});
   }
 
+  historial(){
+    this.navController.navigateRoot('paciente-historial', {animated: false});
+  }
+
 }

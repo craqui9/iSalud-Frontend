@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'doctor-vista-historial',
     loadChildren: () => import('./pages/doctor-vista-historial/doctor-vista-historial.module').then( m => m.DoctorVistaHistorialPageModule)
   },
+  {
+    path: 'paciente-historial',
+    loadChildren: () => import('./pages/paciente-historial/paciente-historial.module').then( m => m.PacienteHistorialPageModule)
+  },
 
 
 ];
