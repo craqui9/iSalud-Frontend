@@ -20,7 +20,9 @@ export class PacientePrincipalPage{
   usuario: Usuario = {
     nombre: ''
   };
-  doctor: Usuario;
+  doctor: Usuario = {
+    nombre: ''
+  };
 
   trata: Tratamiento[] = [];
   tratamientos: Tratamiento[] = [];
