@@ -1,4 +1,3 @@
-
 //----------------------------USUARIO----------------------------
 export interface RespuestaUsuario {
   ok: boolean;
@@ -68,6 +67,24 @@ export interface Tratamiento {
   resuelto?: boolean;
   __v?: number;
 }
+//--------------------------------------------------------
+//----------------------------PedirCita----------------------------
+export interface RespuestaPedirCita {
+  ok: boolean;
+  pedirCitas: PedirCita[];
+}
 
+export interface PedirCita {
+  resuelto?: boolean;
+  _id?: string;
+  usuario_paciente?: string;
+  usuario_doctor?: string;
+  nombre_paciente?: string;
+  fecha?: string;
+  hora?: string;
+  motivo?: string;
+  identificador?: number;
+  __v?: number;
+}
 //crear las interfaces necesarias usando el JSON to TS
 

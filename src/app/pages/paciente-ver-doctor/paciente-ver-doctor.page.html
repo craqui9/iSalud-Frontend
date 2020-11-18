@@ -1,0 +1,29 @@
+<ion-menu side="start" menuId="menuPaciente" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+       <ion-title mode="md">Menú Paciente</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <app-menu-paciente></app-menu-paciente>
+
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="imagenLogo" src="/assets/icon/favicon.png">
+    <ion-title mode="md">iSalud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>

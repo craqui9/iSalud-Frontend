@@ -67,6 +67,14 @@ const routes: Routes = [
     path: 'paciente-historial',
     loadChildren: () => import('./pages/paciente-historial/paciente-historial.module').then( m => m.PacienteHistorialPageModule)
   },
+  {
+    path: 'paciente-ver-doctor',
+    loadChildren: () => import('./pages/paciente-ver-doctor/paciente-ver-doctor.module').then( m => m.PacienteVerDoctorPageModule)
+  },
+  {
+    path: 'paciente-pedir-cita',
+    loadChildren: () => import('./pages/paciente-pedir-cita/paciente-pedir-cita.module').then( m => m.PacientePedirCitaPageModule)
+  },
 
 
 ];

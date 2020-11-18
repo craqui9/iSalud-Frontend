@@ -18,11 +18,6 @@ export class MenuPacienteComponent implements OnInit {
     this.usuarioService.logout();
   }
 
-  onClick(){
-    console.log('hola');
-    
-  }
-
   inicio(){
     this.navController.navigateRoot('paciente-principal', {animated: false});
   }
@@ -33,6 +28,14 @@ export class MenuPacienteComponent implements OnInit {
 
   historial(){
     this.navController.navigateRoot('paciente-historial', {animated: false});
+  }
+
+  cita(){
+    this.navController.navigateRoot('paciente-pedir-cita', {animated: false});
+  }
+
+  doctor(){
+    this.navController.navigateRoot('paciente-ver-doctor', {animated: false});
   }
 
 }

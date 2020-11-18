@@ -19,10 +19,23 @@
   </ion-item>
 
   <ion-item>
+    <ion-button (click)="cita()" expand="block" fill="clear" shape="round">
+      Pedir cita
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="doctor()" expand="block" fill="clear" shape="round">
+      Doctor
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
     <ion-button (click)="noticias()" expand="block" fill="clear" shape="round">
       Ver noticias
     </ion-button>
   </ion-item>
+
 </ion-list>
 
 <ion-button class="botonCerrar" color="danger" (click)="logout()" expand="block" fill="clear" shape="round">
