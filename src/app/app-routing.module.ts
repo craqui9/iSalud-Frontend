@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'paciente-pedir-cita',
     loadChildren: () => import('./pages/paciente-pedir-cita/paciente-pedir-cita.module').then( m => m.PacientePedirCitaPageModule)
   },
+  {
+    path: 'doctor-ver-citaspedidas',
+    loadChildren: () => import('./pages/doctor-ver-citaspedidas/doctor-ver-citaspedidas.module').then( m => m.DoctorVerCitaspedidasPageModule)
+  },
 
 
 ];

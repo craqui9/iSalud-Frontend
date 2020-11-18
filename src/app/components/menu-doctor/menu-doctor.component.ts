@@ -35,4 +35,8 @@ export class MenuDoctorComponent implements OnInit {
   historial(){
     this.navController.navigateRoot('doctor-historial', {animated: false});
   }
+
+  verPedirCita(){
+    this.navController.navigateRoot('doctor-ver-citaspedidas', {animated: false});
+  }
 }

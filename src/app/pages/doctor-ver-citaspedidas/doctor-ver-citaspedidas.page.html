@@ -1,0 +1,36 @@
+<ion-menu side="start" menuId="menuDoctor" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+       <ion-title mode="md">Menú Doctor</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <app-menu-doctor></app-menu-doctor>
+
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="imagenLogo" src="/assets/icon/favicon.png">
+    <ion-title mode="md">iSalud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <br>
+  <ion-title mode="md" color="primary" class="ion-text-center">Citas solicitadas por sus pacientes</ion-title>
+  <br>
+
+  <app-doctor-listado-solicitudes [solicitudes]="solicitudes">
+  </app-doctor-listado-solicitudes>
+
+</ion-content>

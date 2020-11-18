@@ -44,7 +44,6 @@ export class PedirCitaService {
     return new Promise(resolve => {
       this.http.post(`${URL}/pedirCita/doctor`, {usuario_doctor})
           .subscribe(resp => {
-
             resolve(resp['doctor']);
           });
     });
