@@ -1,11 +1,13 @@
 <ion-card  (click)="click()">
 
   <ion-card-header>
-    <ion-card-title>{{solicitud.nombre_paciente}}</ion-card-title>
+    <ion-card-title>Nombre: {{solicitud.nombre_paciente}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-
+    <p>Motivo: {{solicitud.motivo}}</p>
+    <br>
+    <p>Fecha: {{solicitud.fecha}} --- Hora: {{solicitud.hora}}</p>
   </ion-card-content>
 
 </ion-card>

@@ -16,8 +16,7 @@ export class DoctorListadoTratamientoComponent implements OnInit {
 
   constructor(private tratamientoService: TratamientoService,
               private alertController: AlertController,
-              private usuarioService: UsuarioService,
-              private navController: NavController) { }
+              private usuarioService: UsuarioService) { }
 
   ngOnInit() {}
 
@@ -46,7 +45,7 @@ export class DoctorListadoTratamientoComponent implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('');
+            console.log();
           }
         }, {
           text: 'Aceptar',

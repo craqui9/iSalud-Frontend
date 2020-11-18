@@ -30,6 +30,13 @@
   <ion-title mode="md" color="primary" class="ion-text-center">Citas solicitadas por sus pacientes</ion-title>
   <br>
 
+  <div *ngIf="solicitudes.length === 0">
+
+    <br>
+    <p class="ion-text-center">No quedan solicitudes de citas</p>
+
+  </div>
+
   <app-doctor-listado-solicitudes [solicitudes]="solicitudes">
   </app-doctor-listado-solicitudes>
 

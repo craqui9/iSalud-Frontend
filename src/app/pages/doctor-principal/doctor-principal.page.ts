@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { DataLocalService } from '../../services/data-local.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { MenuController } from '@ionic/angular';
-import { Usuario, Cita } from '../../interfaces/interfaces';
+import { Usuario, Cita, PedirCita } from '../../interfaces/interfaces';
 import { CitaService } from '../../services/cita.service';
 import * as moment from 'moment';
+import { PedirCitaService } from '../../services/pedir-cita.service';
 
 @Component({
   selector: 'app-doctor-principal',
@@ -27,10 +28,14 @@ export class DoctorPrincipalPage{
   citasHoy: Cita[] = [];
   citasEditable: boolean = true;
 
+  soliSinFiltrar: PedirCita[] = [];
+  solicitudes: PedirCita[] = [];
+
   constructor(private dataLocal: DataLocalService,
               private usuarioService: UsuarioService,
               private menuController: MenuController,
-              private citaService: CitaService) { }
+              private citaService: CitaService,
+              private pedirCitaService: PedirCitaService) { }
 
   //ESTE MÉTODO SUSTITUYE AL ONINIT PARA HACERLO ASYNC
   async ionViewWillEnter() {
@@ -45,6 +50,9 @@ export class DoctorPrincipalPage{
 
     this.fechaHoy();
     this.cargarCitasHoy();
+
+    await this.conseguirTodo();
+    this.filtrarCitas();
     
   }
   
@@ -107,6 +115,28 @@ export class DoctorPrincipalPage{
         }
       }
 
+    });
+
+  }
+
+  //PedirCitas
+  async conseguirTodo(){
+
+    let getDatos;
+    await this.pedirCitaService.citasDoctor(this.doctor)
+              .then(resp => {
+                getDatos = resp;
+              });
+
+    this.soliSinFiltrar = getDatos;
+  }
+
+  filtrarCitas(){
+
+    this.soliSinFiltrar.forEach(solicitud => {
+      if(solicitud.resuelto === false){
+        this.solicitudes.push(solicitud);
+      }
     });
 
   }

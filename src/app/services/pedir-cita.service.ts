@@ -49,4 +49,23 @@ export class PedirCitaService {
     });
 
   }
+
+  //Actualizar a resuelto
+  actualizarResuelto(identificador: number){
+
+    return new Promise(resolve => {
+
+      this.http.post(`${URL}/pedirCita/resuelto`, {identificador})
+               .subscribe(resp => {
+                
+                if(resp['ok']){
+                  resolve(true);
+                }else{
+                  resolve(false);
+                }
+               });
+
+    });
+
+  }
 }
