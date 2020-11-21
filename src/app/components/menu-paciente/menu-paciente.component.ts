@@ -34,8 +34,4 @@ export class MenuPacienteComponent implements OnInit {
     this.navController.navigateRoot('paciente-pedir-cita', {animated: false});
   }
 
-  doctor(){
-    this.navController.navigateRoot('paciente-ver-doctor', {animated: false});
-  }
-
 }
