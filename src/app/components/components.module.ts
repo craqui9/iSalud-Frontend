@@ -13,6 +13,8 @@ import { DoctorListadoTratamientosComponent } from './doctor-listado-tratamiento
 import { DoctorListadoTratamientoComponent } from './doctor-listado-tratamiento/doctor-listado-tratamiento.component';
 import { DoctorListadoSolicitudesComponent } from './doctor-listado-solicitudes/doctor-listado-solicitudes.component';
 import { DoctorListadoSolicitudComponent } from './doctor-listado-solicitud/doctor-listado-solicitud.component';
+import { PacienteListadoCitasComponent } from './paciente-listado-citas/paciente-listado-citas.component';
+import { PacienteListadoCitaComponent } from './paciente-listado-cita/paciente-listado-cita.component';
 
 
 
@@ -30,7 +32,9 @@ import { DoctorListadoSolicitudComponent } from './doctor-listado-solicitud/doct
     DoctorListadoTratamientosComponent,
     DoctorListadoTratamientoComponent,
     DoctorListadoSolicitudesComponent,
-    DoctorListadoSolicitudComponent
+    DoctorListadoSolicitudComponent,
+    PacienteListadoCitasComponent,
+    PacienteListadoCitaComponent
   ],
   exports: [
     MenuAdminComponent,
@@ -45,7 +49,9 @@ import { DoctorListadoSolicitudComponent } from './doctor-listado-solicitud/doct
     DoctorListadoTratamientosComponent,
     DoctorListadoTratamientoComponent,
     DoctorListadoSolicitudesComponent,
-    DoctorListadoSolicitudComponent
+    DoctorListadoSolicitudComponent,
+    PacienteListadoCitasComponent,
+    PacienteListadoCitaComponent
   ],
   imports: [
     CommonModule
