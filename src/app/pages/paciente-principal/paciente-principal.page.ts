@@ -146,9 +146,12 @@ export class PacientePrincipalPage{
   cargarCitasNoResueltas(){
 
     this.citas.forEach(cita => {
-      if(cita.resuelto === false){
-        this.citasNoResueltas.push(cita);
+      if(cita.fecha !== this.fechaHoy()){
+        if(cita.resuelto === false){
+          this.citasNoResueltas.push(cita);
+        }
       }
+
     });
 
   }
